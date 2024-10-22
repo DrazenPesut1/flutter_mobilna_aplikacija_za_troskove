@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/reusable_widgets/purple_button.dart';
+import 'package:expense_tracker/reusable_widgets/myButton.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -27,28 +27,36 @@ class WelcomePage extends StatelessWidget {
             const SizedBox(
               height: 20.0,
             ),
-            Container(
-              margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: const Text(
-                "The best way to track and manage your finances. Never worry about spending a dime again!",
-                style: TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
+            const Padding(
+              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+              child: Column(
+                children: [
+                  Text(
+                    "The best way to track and manage your finances.",
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text("Never worry about spending a dime again!",
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold,
+                  )
+                  ),
+                ],
               ),
             ),
             const SizedBox(
               height: 50.0,
             ),
             const Text("Let's get started",
-                style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold)),
+                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
             const SizedBox(
               height: 50.0,
             ),
-            PurpleButton("Create account", 285.0, (){
+            MyButton("Create account", 285.0, () {
               Navigator.pushNamed(context, '/register_page');
             }),
             Row(
@@ -63,8 +71,9 @@ class WelcomePage extends StatelessWidget {
                     Navigator.pushNamed(context, '/login_page');
                   },
                   child: const Text(
-                    "Log in",
-                    style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.myPurple),
+                    "Sign in",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: AppColors.primary),
                   ),
                 ),
               ],
