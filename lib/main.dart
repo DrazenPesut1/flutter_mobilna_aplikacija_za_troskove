@@ -1,9 +1,11 @@
+import 'package:expense_tracker/pages/main_app/home_page.dart';
+import 'package:expense_tracker/pages/main_app/transactions_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:expense_tracker/pages/welcome_page.dart';
-import 'package:expense_tracker/pages/register_page.dart';
-import 'package:expense_tracker/pages/login_page.dart';
-import 'package:expense_tracker/pages/home_page.dart';
+import 'package:expense_tracker/pages/login_pages/welcome_page.dart';
+import 'package:expense_tracker/pages/login_pages/register_page.dart';
+import 'package:expense_tracker/pages/login_pages/login_page.dart';
+import 'package:expense_tracker/pages/main_app/navigation_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +27,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/register_page': (context) => const RegisterPage(),
         '/login_page': (context) => const LoginPage(),
+        '/navigation_page': (context) => const NavigationPage(),
         '/home_page': (context) => const HomePage(),
+        '/transactions_page': (context) => const TransactionsPage()
       },
     );
   }

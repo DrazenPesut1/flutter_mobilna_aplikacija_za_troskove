@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/reusable_widgets/myButton.dart';
+import 'package:expense_tracker/myComponents/MyLoginButton.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 
 class WelcomePage extends StatelessWidget {

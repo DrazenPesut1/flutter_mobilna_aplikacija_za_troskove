@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
-import 'package:expense_tracker/reusable_widgets/myButton.dart';
-import 'package:expense_tracker/reusable_widgets/myTextField.dart';
+import 'package:expense_tracker/myComponents/MyLoginButton.dart';
+import 'package:expense_tracker/myComponents/MyTextField.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget{
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
       backgroundColor: AppColors.offWhite,
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: AppColors.offWhite,
         leading: IconButton(
           onPressed: (){
             Navigator.pop(context);
@@ -18,8 +20,8 @@ class LoginPage extends StatelessWidget {
           icon: const Icon(Icons.arrow_back_rounded),
           iconSize: 30.0
         ),
-        title: const Text("Sign in", style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),),
-        centerTitle: false,
+        title: const Text("Sign up", style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: SizedBox(
@@ -29,10 +31,14 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              Image.asset('assets/images/login.png', width: 250),
+              Image.asset('assets/images/register.png', width: 260),
               Container(
                 padding: const EdgeInsets.fromLTRB(35, 15, 35, 10),
                 child: Column(children: [
+                  const MyTextField("Enter your username", Icons.person, false),
+                  const SizedBox(
+                    height: 15,
+                  ),
                   const MyTextField("Enter your email", Icons.email_rounded, false),
                   const SizedBox(
                     height: 15,
@@ -41,18 +47,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  MyButton("Sign in", double.infinity, () {Navigator.pushNamed(context, '/home_page');}),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const Align(
-                    alignment: Alignment.center,
-                    child: Text("Forgot password?",
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primary)),
-                  ),
+                  MyButton("Sign up", double.infinity, () {Navigator.pushNamed(context, '/navigation_page');}),
                   const SizedBox(
                     height: 20,
                   ),

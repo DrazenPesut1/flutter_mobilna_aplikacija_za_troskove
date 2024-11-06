@@ -12,6 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  font_awesome_flutter: ^10.0.0
+  ionicons: ^0.2.2
+  material_symbols_icons: ^4.2789.0
+  
 
 dev_dependencies:
   flutter_test:
@@ -36,3 +40,6 @@ flutter:
     - family: Lato
       fonts:
         - asset: assets/fonts/Lato-Regular.ttf
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins.ttf
