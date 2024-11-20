@@ -13,7 +13,7 @@ Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok
 - sadrži ilustraciju i formu za registraciju korisnika
 
 
-*Stranica za prijavu*
+**Stranica za prijavu**
 - sadrži ilustraciju i formu za prijavu
 
 
