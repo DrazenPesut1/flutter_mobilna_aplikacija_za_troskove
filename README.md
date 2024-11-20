@@ -1,13 +1,10 @@
 # Mobilna aplikacija za praćenje troškova
----
 Aplikacija kao projekt za kolegij Projekt R na Fakultetu Elektrotehnike i Računarstva Sveučilišta u Zagrebu
 
 ## Opis projekta
----
 Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok novca i praćenje osobnih troškova s ciljem boljeg raspolaganja financijama. Aplikacija će korisnicima omogućiti da jednostavno unesu troškove i prihode koje kategoriziraju prema nekoj vrsti troška (hrana, računi, automobil, javni prijevoz, zdravstvo...) ili prihoda (plaća, ulaganje, dar...) te mogu postaviti štednju ili dugovanje te pratiti njihov napredak. Pregled troškova će biti omogućen prema različitim vremenskim rasponima (danas, ovaj tjedan, ovaj mjesec ili bilo koji raspon koji korisnik želi), a osim toga aplikacija nudi pregled detalja i analizu troškova i prihoda uz pomoć grafova i izvještaja. Aplikacija će biti izvedena kao cross-platform aplikacija dostupna na Android i iOS uređajima koristeći tehnologije Flutter, programski jezik Dart, dodatne pakete te bazu podataka Firebase. 
 
 ## Struktura aplikacije
----
 Naslovna stranica
 - stranica koju korisnik vidi pri prvom pokretanju aplikacije, sadrži ilustraciju,kratak pozdravni tekst i korisniku nudi opcije da stvori račun ili da se prijavi ako već ima postojeći račun
 
@@ -34,4 +31,4 @@ Glavne tehnologije korištene za izvedbu aplikacije su Flutter i programski jezi
 Android emulatori pruženi od strane Android Studia se koriste za razvoj i testiranje aplikacije, a glavno razvojno okruženje je VS-Code.
 
 ## Resursi
-- [online documentation](https://docs.flutter.dev/)
+- https://docs.flutter.dev/
