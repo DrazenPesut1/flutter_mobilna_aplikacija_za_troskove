@@ -1,17 +1,37 @@
-# expense_tracker
+# Mobilna aplikacija za praćenje troškova
+---
+Aplikacija kao projekt za kolegij Projekt R na Fakultetu Elektrotehnike i Računarstva Sveučilišta u Zagrebu
 
-A new Flutter project.
+## Opis projekta
+---
+Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok novca i praćenje osobnih troškova s ciljem boljeg raspolaganja financijama. Aplikacija će korisnicima omogućiti da jednostavno unesu troškove i prihode koje kategoriziraju prema nekoj vrsti troška (hrana, računi, automobil, javni prijevoz, zdravstvo...) ili prihoda (plaća, ulaganje, dar...) te mogu postaviti štednju ili dugovanje te pratiti njihov napredak. Pregled troškova će biti omogućen prema različitim vremenskim rasponima (danas, ovaj tjedan, ovaj mjesec ili bilo koji raspon koji korisnik želi), a osim toga aplikacija nudi pregled detalja i analizu troškova i prihoda uz pomoć grafova i izvještaja. Aplikacija će biti izvedena kao cross-platform aplikacija dostupna na Android i iOS uređajima koristeći tehnologije Flutter, programski jezik Dart, dodatne pakete te bazu podataka Firebase. 
 
-## Getting Started
+## Struktura aplikacije
+---
+Naslovna stranica
+- stranica koju korisnik vidi pri prvom pokretanju aplikacije, sadrži ilustraciju,kratak pozdravni tekst i korisniku nudi opcije da stvori račun ili da se prijavi ako već ima postojeći račun
 
-This project is a starting point for a Flutter application.
+Stranica za registraciju
+- sadrži ilustraciju i formu za registraciju korisnika
 
-A few resources to get you started if this is your first Flutter project:
+Stranica za prijavu
+- sadrži ilustraciju i formu za prijavu
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Stranica za račune
+- stranica koja omogućava korisniku da dodaje vlastite račune 
+- sastoji se od 3 podstranice za:
+  - obične račune (kartice, gotovina, vaučeri, paypall...)
+  - štednju 
+  - dugove (prema sebi i drugima)
+- korisnici će moći dodati račun, postaviti inicijalni iznos i urediti ga
+- uređivanje računa podrazumijeva promjenu naziva, ikone, dodavanje ili oduzimanje od stanja računa, prijenos između računa
+- računi za štednju i dugove prikazuju napredak do cilja štednje ili vraćanja/primanja duga
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# Projekt-R
+...
+
+## Tehnologije
+Glavne tehnologije korištene za izvedbu aplikacije su Flutter i programski jezik Dart. Flutter omogućuje razvoj jedinstvene cross-platform kodne baze za operacijske sustave Android i iOS.
+Android emulatori pruženi od strane Android Studia se koriste za razvoj i testiranje aplikacije, a glavno razvojno okruženje je VS-Code.
+
+## Resursi
+- [online documentation](https://docs.flutter.dev/)
