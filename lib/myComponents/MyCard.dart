@@ -23,6 +23,7 @@ abstract class MyCard extends StatefulWidget {
 }
 
 class MyAccountCard extends MyCard {
+  // ignore: constant_identifier_names
   static const account_card_subtitle = 'Current balance: ';
 
   const MyAccountCard({super.key, 

@@ -4,6 +4,7 @@ import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:expense_tracker/myComponents/MyCard.dart';
+import 'package:expense_tracker/myComponents/MyAddAccountButton.dart';
 
 class RegularAccountPage extends StatefulWidget {
   const RegularAccountPage({super.key});
@@ -32,10 +33,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
               TextSpan(text: 'Total balance:', style: NormalBodyTextStyle(color: Colors.black).textStyle),
               TextSpan(text: '  $totalBalance' '$currency', style: MoneyBodyTextStyle(color: AppColors.moneyPositive).textStyle)
             ])),
-            const MyAccountCard(card_title: 'Credit card', card_icon: Ionicons.card_outline, card_color: Colors.orange),
-            const MyAccountCard(card_title: 'Cash', card_icon: Ionicons.cash_outline, card_color: Colors.green),
-            const MyAccountCard(card_title: 'Paypal', card_icon: Ionicons.logo_paypal, card_color: Colors.blue),
-            const MyAccountCard(card_title: 'Wallet', card_icon: Icons.wallet, card_color: Colors.brown)
+            const MyAddAccountButton(account_type: 'Regular',),
           ],
         )
       ),
