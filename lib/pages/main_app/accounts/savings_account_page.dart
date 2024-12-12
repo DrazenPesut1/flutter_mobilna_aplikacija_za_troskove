@@ -1,5 +1,11 @@
+import 'package:expense_tracker/myComponents/MyAddAccountButton.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:expense_tracker/styles/font_styles.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:expense_tracker/myComponents/MyColorBox.dart';
+import 'package:expense_tracker/myComponents/MyPlusButton.dart';
 
 class SavingsAccountPage extends StatefulWidget{
   const SavingsAccountPage({super.key});
@@ -13,7 +19,11 @@ class _SavingsAccountPageState extends State<SavingsAccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.offWhite,
-      body: Center(child: Text("Savings accounts"),),
+      body: Column(
+        children: [
+          MyAddAccountButton(account_type: 'Savings')
+        ],
+      )
     );
   }
 }

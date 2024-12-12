@@ -16,6 +16,8 @@ dependencies:
   ionicons: ^0.2.2
   material_symbols_icons: ^4.2789.0
   flutter_colorpicker: ^1.1.0
+  dashed_circular_progress_bar: ^0.0.6
+  flutter_iconpicker: ^4.0.1
   
 
 dev_dependencies:

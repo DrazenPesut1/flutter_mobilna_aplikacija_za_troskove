@@ -1,3 +1,6 @@
+import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_debts_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_regular_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_savings_account_page.dart';
 import 'package:expense_tracker/pages/main_app/home_page.dart';
 import 'package:expense_tracker/pages/main_app/transactions_page.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +32,10 @@ class MyApp extends StatelessWidget {
         '/login_page': (context) => const LoginPage(),
         '/navigation_page': (context) => const NavigationPage(),
         '/home_page': (context) => const HomePage(),
-        '/transactions_page': (context) => const TransactionsPage()
+        '/transactions_page': (context) => const TransactionsPage(),
+        '/add_regular_account' : (context) => const AddRegularAccountPage(),
+        '/add_savings_account': (context) => const AddSavingsAccountPage(),
+        '/add_debts_account' : (context) => const AddDebtsAccountPage()
       },
     );
   }
