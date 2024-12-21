@@ -7,8 +7,9 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 class MyAddAccountButton extends StatefulWidget {
   // ignore: non_constant_identifier_names
   final String account_type;
+  final VoidCallback function;
   // ignore: non_constant_identifier_names
-  const MyAddAccountButton({required this.account_type, super.key});
+  const MyAddAccountButton({required this.account_type, required this.function, super.key});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -21,9 +22,7 @@ class _MyAddAccountButtonState extends State<MyAddAccountButton> {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: (){
-          Navigator.pushNamed(context, '/add_${widget.account_type.toLowerCase()}_account');
-        },
+        onPressed: widget.function,
         style: ElevatedButton.styleFrom(
           foregroundColor: AppColors.offWhite,
           backgroundColor: AppColors.primary

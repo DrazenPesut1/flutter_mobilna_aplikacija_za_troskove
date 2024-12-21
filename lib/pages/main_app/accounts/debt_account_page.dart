@@ -19,10 +19,12 @@ class DebtsAccountPage extends StatefulWidget{
 class _DebtsAccountPageState extends State<DebtsAccountPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.offWhite,
       body: Column(children: [
-         MyAddAccountButton(account_type: "Debts")
+         MyAddAccountButton(account_type: "Debts", function: () {
+           
+         },)
       ],) 
     );
   }

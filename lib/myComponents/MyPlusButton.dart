@@ -4,7 +4,7 @@ import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:ionicons/ionicons.dart';
 
 class MyPlusButton extends StatelessWidget{
-  final Function function_;
+  final VoidCallback function_;
   const MyPlusButton({required this.function_ , super.key});
 
   @override
@@ -13,7 +13,7 @@ class MyPlusButton extends StatelessWidget{
       height: 50,
       width: 90,
       child: ElevatedButton(
-        onPressed: (){},
+        onPressed: function_,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.offWhite,
