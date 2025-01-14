@@ -29,6 +29,11 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
 
   String? selectedType = 'I owe';
 
+  final TextEditingController accountNameController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController initialPaidOffAmountController = TextEditingController();
+  final TextEditingController debtGoalAmountController = TextEditingController();
+
   void updateProgressBar(){
     setState(() {
       if(goal == 0 || initial_amount == 0){
@@ -142,8 +147,9 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
                 ),
               ),
               const SizedBox(height: 5.0),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: accountNameController,
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
                   hintText: "Car payment, mortgage, small loan...",
                   hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
@@ -176,8 +182,9 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
                 ),
               ),
               const SizedBox(height: 5.0),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: descriptionController,
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
                   hintText: "What is your account used for...",
                   hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
@@ -316,6 +323,7 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
                       ),
                       const SizedBox(width: 15.0),
                       TextField(
+                        controller: initialPaidOffAmountController,
                         onSubmitted: (value){
                           setState(() {
                             initial_amount = double.tryParse(value)!;
@@ -350,6 +358,7 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
                       ),
                       const SizedBox(width: 15.0),
                       TextField(
+                        controller: debtGoalAmountController,
                         onSubmitted: (value){
                           setState(() {
                             goal = double.tryParse(value)!;
@@ -415,7 +424,19 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
                 ),
               ),
               const SizedBox(height: 25.0),
-              MyPlusButton(function_: () {}),
+              MyPlusButton(function_: () {
+                final accountData = {
+                  'accountName': accountNameController.text,
+                  'description': descriptionController.text,
+                  'initialPaidOffAmount': double.tryParse(initialPaidOffAmountController.text) ?? 0.0,
+                  'debtGoalAmount': double.tryParse(debtGoalAmountController.text) ?? 0.0,
+                  'selectedIcon': selectedIcon,
+                  'selectedColor': selectedColor,
+                  'selectedType': selectedType
+                };
+
+                Navigator.pop(context, accountData);
+              }),
             ],
           ),
         ),

@@ -18,6 +18,8 @@ dependencies:
   flutter_colorpicker: ^1.1.0
   dashed_circular_progress_bar: ^0.0.6
   flutter_iconpicker: ^4.0.1
+  page_transition: ^2.2.1
+  dotted_border: ^2.1.0
   
 
 dev_dependencies:

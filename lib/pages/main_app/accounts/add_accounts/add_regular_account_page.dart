@@ -140,7 +140,6 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
                   hintText: "Card, cash...",
                   hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
                   filled: true,
-                  fillColor: AppColors.offWhite,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(12.0)),
                     borderSide: BorderSide(
@@ -290,16 +289,14 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
               ),
               MyPlusButton(
                   function_: () {
-                    // Prepare the data to pass back
                     final accountData = {
                       'accountName': accountNameController.text,
                       'description': descriptionController.text,
-                      'initialBalance': initialBalanceController.text,
+                      'initialBalance': double.tryParse(initialBalanceController.text) ?? 0.0,
                       'selectedIcon': selectedIcon,
                       'selectedColor': selectedColor,
                     };
 
-                    // Pop and pass the data back
                     Navigator.pop(context, accountData);
                   }),
             ],

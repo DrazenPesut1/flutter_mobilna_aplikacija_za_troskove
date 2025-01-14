@@ -18,7 +18,7 @@ class MyPlusButton extends StatelessWidget{
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.offWhite,
         ), 
-        child: const Icon(Ionicons.add_sharp, size: 40,)
+        child: const Icon(Ionicons.add_sharp, size: 40, color: AppColors.offWhite,)
       ),
     );
   }

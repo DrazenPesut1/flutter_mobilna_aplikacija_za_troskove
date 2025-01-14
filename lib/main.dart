@@ -1,6 +1,8 @@
+import 'package:expense_tracker/myComponents/HomeComponents/AddCategoryButton.dart';
 import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_debts_account_page.dart';
 import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_regular_account_page.dart';
 import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_savings_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/add_category/add_category_page.dart';
 import 'package:expense_tracker/pages/main_app/home_page.dart';
 import 'package:expense_tracker/pages/main_app/transactions_page.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,8 @@ import 'package:expense_tracker/pages/login_pages/welcome_page.dart';
 import 'package:expense_tracker/pages/login_pages/register_page.dart';
 import 'package:expense_tracker/pages/login_pages/login_page.dart';
 import 'package:expense_tracker/pages/main_app/navigation_page.dart';
+import 'package:flutter_iconpicker/flutter_iconpicker.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,15 +31,72 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const WelcomePage(),
-      routes: {
-        '/register_page': (context) => const RegisterPage(),
-        '/login_page': (context) => const LoginPage(),
-        '/navigation_page': (context) => const NavigationPage(),
-        '/home_page': (context) => const HomePage(),
-        '/transactions_page': (context) => const TransactionsPage(),
-        '/add_regular_account' : (context) => const AddRegularAccountPage(),
-        '/add_savings_account': (context) => const AddSavingsAccountPage(),
-        '/add_debts_account' : (context) => const AddDebtsAccountPage()
+      onGenerateRoute: (settings){
+        switch(settings.name){
+          case '/register_page':
+            return PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const RegisterPage()
+            );
+          case '/login_page':
+            return PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const LoginPage()
+            );
+          case '/navigation_page':
+            return PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const NavigationPage()
+            );
+            case '/home_page':
+            return PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const HomePage()
+            );
+            case '/add_category_page':
+            return PageTransition(
+              type: PageTransitionType.bottomToTop,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const AddCategoryPage()
+            );
+            case '/transactions_page':
+            return PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const TransactionsPage()
+            );
+            case '/add_regular_account_page':
+            return PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const AddRegularAccountPage()
+            );
+            case '/add_savings_account_page':
+            return PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const AddSavingsAccountPage()
+            );
+            case '/add_debts_account_page':
+            return PageTransition(
+              type: PageTransitionType.rightToLeft,
+              duration: const Duration(milliseconds: 200),
+              settings: settings,
+              child: const AddDebtsAccountPage()
+            );
+        }
       },
     );
   }

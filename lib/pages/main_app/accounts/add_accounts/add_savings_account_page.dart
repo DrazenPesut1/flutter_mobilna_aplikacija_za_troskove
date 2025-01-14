@@ -24,6 +24,11 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
   double goal = 0;
   final ValueNotifier<double> _valueNotifier = ValueNotifier(0);
   double progress = 0;
+  
+  final TextEditingController accountNameController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController initialSavedAmountController = TextEditingController();
+  final TextEditingController savingsGoalAmountController = TextEditingController();
 
   void updateProgressBar(){
     setState(() {
@@ -138,8 +143,9 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                 ),
               ),
               const SizedBox(height: 5.0),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: accountNameController,
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
                   hintText: "Card, cash...",
                   hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
@@ -172,8 +178,9 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                 ),
               ),
               const SizedBox(height: 5.0),
-              const TextField(
-                decoration: InputDecoration(
+              TextField(
+                controller: descriptionController,
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
                   hintText: "What is your account used for...",
                   hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
@@ -267,6 +274,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                       ),
                       const SizedBox(width: 15.0),
                       TextField(
+                        controller: initialSavedAmountController,
                         onSubmitted: (value){
                           setState(() {
                             initial_amount = double.tryParse(value)!;
@@ -301,6 +309,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                       ),
                       const SizedBox(width: 15.0),
                       TextField(
+                        controller: savingsGoalAmountController,
                         onSubmitted: (value){
                           setState(() {
                             goal = double.tryParse(value)!;
@@ -366,7 +375,18 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                 ),
               ),
               const SizedBox(height: 25.0),
-              MyPlusButton(function_: () {}),
+              MyPlusButton(function_: () {
+                final accountData = {
+                  'accountName': accountNameController.text,
+                  'description': descriptionController.text,
+                  'initialSavedAmount': double.tryParse(initialSavedAmountController.text) ?? 0.0,
+                  'savingsGoalAmount': double.tryParse(initialSavedAmountController.text) ?? 0.0,
+                  'selectedIcon': selectedIcon,
+                  'selectedColor': selectedColor,
+                };
+
+                Navigator.pop(context, accountData);
+              }),
             ],
           ),
         ),

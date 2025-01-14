@@ -1,3 +1,5 @@
+import 'package:expense_tracker/myComponents/MyCard.dart';
+import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_savings_account_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -24,16 +26,31 @@ class _SavingsAccountPageState extends State<SavingsAccountPage> {
   final ValueNotifier<double> _valueNotifier = ValueNotifier(0);
   double progress = 450;
 
-  void updateProgressBar(){
-    setState(() {
-      if(goal == 0 || initial_amount == 0){
-        progress = 0;
-      } else if(goal > initial_amount){
-        progress = (initial_amount * 1.0 / goal) * 100.0;
-      } else if(goal <= initial_amount){
-        progress = 100.0;
-      }
-    });
+  List<MySavingsAccountCard> savingsAccountsList = [];
+
+  void navigateToAddAccountPage(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddSavingsAccountPage()),
+    );
+
+    // Check if data is returned and add new account
+    if (result != null) {
+      debugPrint("All ok here.");
+      setState(() {
+        savingsAccountsList.add(
+          MySavingsAccountCard(
+            card_title: result['accountName'],
+            card_description: result['description'],
+            card_balance: result['initialSavedAmount'],
+            goal: result['savingsGoalAmount'],
+            card_icon: result['selectedIcon'],
+            card_color: result['selectedColor'], 
+            progress: (1.0 * result['initialSavedAmount']) / result['savingsGoalAmount'],
+          ),
+        );
+      });
+    }
   }
 
   @override
@@ -42,69 +59,22 @@ class _SavingsAccountPageState extends State<SavingsAccountPage> {
       backgroundColor: AppColors.offWhite,
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Card(
-              color: AppColors.offWhite,
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(
-                  width: 1.4, 
-                  style: BorderStyle.solid, 
-                  color: Colors.black
-                ),
-                borderRadius: BorderRadius.circular(12.0)
+          Expanded(
+              child: ListView.builder(
+                itemCount: savingsAccountsList.length,  // Dynamically update the item count
+                itemBuilder: (context, index) {
+                  MySavingsAccountCard account = savingsAccountsList[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5.0),
+                    child: account,  // Render the MyRegularAccountCard widget
+                  );
+                },
               ),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("SONY Camera", style: BoldBodyTextStyle(color: Colors.black).textStyle,),
-                        Text("450 € / 1000 €", style: NormalBodyTextStyle(color: Colors.black).textStyle,),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 90, // Increase height here
-                      width: 90,
-                      child: DashedCircularProgressBar.aspectRatio(
-                        aspectRatio: 1, // width ÷ height
-                        valueNotifier: _valueNotifier,
-                        progress: 45,
-                        startAngle: 0,
-                        sweepAngle: 360,
-                        foregroundColor: Colors.blue,
-                        backgroundColor: const Color(0xffeeeeee),
-                        foregroundStrokeWidth: 10,
-                        backgroundStrokeWidth: 10,
-                        animation: true,
-                        seekSize: 6,
-                        seekColor: const Color(0xffeeeeee),
-                        child: Center(
-                          child: ValueListenableBuilder(
-                            valueListenable: _valueNotifier,
-                            builder: (_, double value, __) => const Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(Icons.camera_alt_rounded, size: 35, color: Colors.blue,),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            
             ),
-          ),
-          MyAddAccountButton(account_type: 'Savings', function: () {
-            
-          },)
+          MyAddAccountButton(
+            account_type: 'Savings',
+             function: () => navigateToAddAccountPage(context),
+          )
         ],
       )
     );

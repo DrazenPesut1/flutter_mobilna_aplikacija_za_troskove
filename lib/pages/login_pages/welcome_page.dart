@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/myComponents/MyLoginButton.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
+import 'package:page_transition/page_transition.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -68,7 +69,8 @@ class WelcomePage extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login_page');
+                    Navigator.pushNamed(context, '/login_page')
+                    ;
                   },
                   child: const Text(
                     "Sign in",
