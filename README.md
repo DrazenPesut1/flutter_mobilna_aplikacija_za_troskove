@@ -17,6 +17,14 @@ Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok
 - sadrži ilustraciju i formu za prijavu
 
 
+**Glavna Stranica**
+- stranica koju korisnik vidi prilikom prijave/pokretanja aplikacije
+- sadrži kategorije za troškove i primanja te mogućnost dodavanja vlastitih kategorija
+- korisnik na ovoj stranici dodaje troškove ili primanja iz/u jednog od stvorenih računa na stranici za račune
+- troškovi su prikazani po kategorijama te se ukupan prikaz troškova za tekući mjesec može vidjeti kao pie-chart, a za ostala vremenska razdoblja na stranici za statistiku
+- ...
+
+
 **Stranica za račune**
 - stranica koja omogućava korisniku da dodaje vlastite račune 
 - sastoji se od 3 podstranice za:
@@ -26,8 +34,6 @@ Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok
 - korisnici će moći dodati račun, postaviti inicijalni iznos i urediti ga
 - uređivanje računa podrazumijeva promjenu naziva, ikone, dodavanje ili oduzimanje od stanja računa, prijenos između računa
 - računi za štednju i dugove prikazuju napredak do cilja štednje ili vraćanja/primanja duga
-
-...
 
 ## Tehnologije
 Glavne tehnologije korištene za izvedbu aplikacije su Flutter i programski jezik Dart. Flutter omogućuje razvoj jedinstvene cross-platform kodne baze za operacijske sustave Android i iOS.
@@ -43,3 +49,4 @@ Android emulatori pruženi od strane Android Studia se koriste za razvoj i testi
 - **22.11.2024.** - dodan prozor za dodavanje običnih računa, namjeravam isto napraviti za račune za štednju i dugove
 - **12.12.2024.** - mogućnost dodavanja svih tipova računa i djelomično uređivanje računa
 - **20.12.2024** - popravljen i nadodan kod za račune, radim na kategorijama za glavnu stranicu
+- **14.1.2024** - dodane kategorije za troškove i dodavanje vlastitih kategorija
