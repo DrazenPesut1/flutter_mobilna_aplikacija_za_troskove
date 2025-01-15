@@ -3,6 +3,7 @@ import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_debts_a
 import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_regular_account_page.dart';
 import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_savings_account_page.dart';
 import 'package:expense_tracker/pages/main_app/accounts/add_category/add_category_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/home_pages/expense_home_page.dart';
 import 'package:expense_tracker/pages/main_app/home_page.dart';
 import 'package:expense_tracker/pages/main_app/transactions_page.dart';
 import 'package:flutter/material.dart';

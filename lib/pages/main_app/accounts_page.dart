@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
-import 'package:expense_tracker/pages/main_app/accounts/regular_account_page.dart';
-import 'package:expense_tracker/pages/main_app/accounts/savings_account_page.dart';
-import 'package:expense_tracker/pages/main_app/accounts/debt_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/accounts_pages/regular_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/accounts_pages/savings_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/accounts_pages/debt_account_page.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:ionicons/ionicons.dart';
 

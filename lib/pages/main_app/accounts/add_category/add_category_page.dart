@@ -1,4 +1,5 @@
 import 'package:expense_tracker/myComponents/AddTextField.dart';
+import 'package:expense_tracker/myComponents/HomeComponents/RoundedCreateButton.dart';
 import 'package:expense_tracker/myComponents/MyColorBox.dart';
 import 'package:expense_tracker/myComponents/MyTextField.dart';
 import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_regular_account_page.dart';
@@ -20,8 +21,9 @@ class AddCategoryPage extends StatefulWidget {
 }
 
 class _AddCategoryPage extends State<AddCategoryPage> {
-  late Color selectedColor = Colors.blue;
-  late Icon selectedIcon = Icon(Icons.dangerous);
+  Color selectedColor = Colors.deepOrange;
+  Icon? selectedIcon = Icon(Ionicons.gift, size: 32, color: Colors.deepOrange,);
+
 
   void openColorPicker() {
     showDialog(
@@ -41,7 +43,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
                     selectedIcon = Icon(
                       selectedIcon!.icon, // Retain the existing icon data
                       color: selectedColor,
-                      size: 45.0,
+                      size: 32.0,
                     );
                   }
                 });
@@ -88,7 +90,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
         selectedIcon = Icon(
           icon.data,
           color: selectedColor,
-          size: 45.0,
+          size: 32.0,
         );
       });
       debugPrint('Picked Icon: $icon');
@@ -112,7 +114,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Column(
@@ -126,63 +128,82 @@ class _AddCategoryPage extends State<AddCategoryPage> {
                 ),
                 AddTextField(label: "Enter category name", icon: Icons.category_rounded, isPassword: false, textEditingController: categoryNameController),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
-                Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    // Icon Selector
-    Column(
-      children: [
-        Text(
-          "Choose icon:",
-          style: NormalBodyTextStyle(color: Colors.black).textStyle,
-        ),
-        const SizedBox(height: 5.0),
-        GestureDetector(
-          onTap: openIconPicker,
-          child: Container(
-            width: 125,
-            height: 70.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(width: 1.2, color: Colors.grey),
-            ),
-            child: Center(
-              child: selectedIcon ?? const Icon(Icons.credit_card_rounded),
-            ),
-          ),
-        ),
-      ],
-    ),
-    // Spacer
-    const SizedBox(height: 25.0),
-    // Color Selector
-    Column(
-      children: [
-        Text(
-          "Icon color:",
-          style: NormalBodyTextStyle(color: Colors.black).textStyle,
-        ),
-        const SizedBox(height: 5.0),
-        GestureDetector(
-          onTap: openColorPicker,
-          child: Container(
-            width: 125,
-            height: 70.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.0),
-              border: Border.all(width: 1.2, color: Colors.grey),
-            ),
-            child: Center(
-              child: MyColorBox(color_: selectedColor),
-            ),
-          ),
-        ),
-      ],
-    ),
-  ],
-)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 0),
+                  child: Row(children: [
+                    Expanded(
+                      child: Container(
+                        height: 55,
+                        decoration: const BoxDecoration(
+                          color: Color(0x2A000000),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10)
+                          ),
+                          border: Border(
+                            right: BorderSide(
+                              color: Colors.black,
+                              width: 1.2
+                            ),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text("Icon", style: BoldBodyTextStyle(color: Colors.black).textStyle,),
+                              Icon(Ionicons.gift, size: 32, color: selectedColor)
+                          ],),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: openColorPicker,
+                        child: Container(
+                          height: 55,
+                          decoration: const BoxDecoration(
+                            color: Color(0x2A000000),
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              bottomRight: Radius.circular(10)
+                            ),
+                            border: Border(
+                              left: BorderSide(
+                                color: Colors.black,
+                                width: 1.2
+                              ),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text("Color", style: BoldBodyTextStyle(color: Colors.black).textStyle,),
+                                Icon(Ionicons.color_fill, size: 32, color: selectedColor,)
+                            ],),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                RoundedCreateButton(function: (){
+                  final categoryData = ({
+                    'categoryName' : categoryNameController.text,
+                    'selectedIcon' : selectedIcon?.icon ?? Icons.abc,
+                    'selectedColor' : selectedColor
+                  });
+
+                  Navigator.pop(context, categoryData);
+                })
               ],
             )
           ],

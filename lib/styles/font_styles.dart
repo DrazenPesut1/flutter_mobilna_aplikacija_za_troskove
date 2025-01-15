@@ -113,7 +113,7 @@ class MoneyBodyTextStyle{
   // Constructor that allows customization of color only
   MoneyBodyTextStyle({
     required this.color,               // Only color is passed in
-    this.fontSize = 19.0,              // Default font size
+    required this.fontSize,              // Default font size
     this.fontWeight = FontWeight.bold,  // Default font weight
     this.fontFamily = 'Poppins',        // Default font family                // Default line height
   });

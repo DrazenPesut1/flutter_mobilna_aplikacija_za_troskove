@@ -55,7 +55,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
             // Display total balance with currency
             Text.rich(TextSpan(children: [
               TextSpan(text: 'Total balance:', style: NormalBodyTextStyle(color: Colors.black).textStyle),
-              TextSpan(text: '  $totalBalance' '$currency', style: MoneyBodyTextStyle(color: AppColors.moneyPositive).textStyle),
+              TextSpan(text: '  $totalBalance' '$currency', style: MoneyBodyTextStyle(color: AppColors.moneyPositive, fontSize: 19.0).textStyle),
             ])),
             
             const SizedBox(height: 20.0), // Optional space before the list

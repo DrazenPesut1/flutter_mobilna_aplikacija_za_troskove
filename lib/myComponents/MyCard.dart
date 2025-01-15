@@ -72,7 +72,7 @@ class _MyRegularAccountCardState extends State<MyRegularAccountCard> {
               ),
               TextSpan(
                   text: '${widget.card_balance}',
-                  style: MoneyBodyTextStyle(color: AppColors.moneyPositive)
+                  style: MoneyBodyTextStyle(color: AppColors.moneyPositive, fontSize: 19.0)
                       .textStyle),
             ]))),
       ),

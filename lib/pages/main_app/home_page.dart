@@ -1,12 +1,10 @@
-import 'package:expense_tracker/myComponents/HomeComponents/AddCategoryButton.dart';
-import 'package:expense_tracker/myComponents/HomeComponents/ExpenseCategoryCard.dart';
-import 'package:expense_tracker/pages/main_app/accounts/add_category/add_category_page.dart';
-import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:expense_tracker/pages/main_app/accounts/home_pages/expense_home_page.dart';  // Make sure this is properly imported
 import 'package:expense_tracker/styles/app_colors.dart';
+import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:ionicons/ionicons.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
@@ -14,76 +12,135 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage> {
+
+  double total_balance = 4124.36; // balance in euros
+  String displayed_screen = "expense"; // Default is "expense"
+
+  // Toggle between Expense and Income screen
+  void toggleScreen(String screen) {
+    setState(() {
+      displayed_screen = screen; // Change screen state
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const Drawer(),
       backgroundColor: AppColors.offWhite,
-      drawer: const Drawer(
-        child: Icon(Ionicons.reorder_three_outline),
-      ),
       appBar: AppBar(
-        backgroundColor: AppColors.offWhite,       
-        elevation: 0,
-        title: Text("January 2025", style: BoldHeaderTextStyle(color: Colors.black).textStyle),
+        automaticallyImplyLeading: true,
+        title: const Text(
+          'January 2025',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Ionicons.pencil, color: Colors.black,))
+        ],
+        surfaceTintColor: AppColors.offWhite,
+        backgroundColor: AppColors.offWhite,
+        elevation: 3,
+        shadowColor: Colors.black,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-          child: Column(
-            children: [
-              ExpenseCategoryCard(category_name: "Car", category_icon: Ionicons.car_sport, category_color: Colors.green),
-              const SizedBox(
-                height: 10,
-              ),
-              ExpenseCategoryCard(category_name: "Health", category_icon: Ionicons.pulse, category_color: Colors.red),
-              const SizedBox(
-                height: 10,
-              ),
-              ExpenseCategoryCard(category_name: "Groceries", category_icon: Ionicons.cart, category_color: Colors.teal),
-              const SizedBox(
-                height: 10,
-              ),
-              ExpenseCategoryCard(category_name: "Clothing", category_icon: Ionicons.shirt, category_color: Colors.brown),
-              const SizedBox(
-                height: 10,
-              ),
-              ExpenseCategoryCard(category_name: "Cafe", category_icon: Ionicons.cafe, category_color: Colors.blueGrey),
-              const SizedBox(
-                height: 10,
-              ),
-              ExpenseCategoryCard(category_name: "Pets", category_icon: Ionicons.paw, category_color: Colors.deepOrange),
-              const SizedBox(
-                height: 10,
-              ),
-              ExpenseCategoryCard(category_name: "Entertainment", category_icon: Ionicons.game_controller, category_color: Colors.blue),
-              const SizedBox(
-                height: 10,
-              ),
-              ExpenseCategoryCard(category_name: "Bills", category_icon: Ionicons.mail, category_color: Colors.purpleAccent),
-              const SizedBox(
-                height: 10,
-              ),
-              AddCategoryButton(
-                function: () {
-                  showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true, // Allows customization of the height
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+        child: Column(
+          children: [
+            // Container for both the label and the balance
+            SizedBox(
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Total balance",
+                      style: NormalBodyTextStyle(color: AppColors.textGray).textStyle,
                     ),
-                    builder: (context) {
-                      return const FractionallySizedBox(
-                        heightFactor: 0.65, // 70% height of the screen
-                        child: AddCategoryPage(), // Your modal content
-                      );
-                    },
-                  );
-                },
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "$total_balance EUR",
+                      style: MoneyBodyTextStyle(color: Colors.black, fontSize: 26.0).textStyle,
+                    ),
+                  ),
+                ],
               ),
+            ),
+            const SizedBox(height: 20),
 
-            ],
-          ),
+            // Row with the buttons to toggle between "Expenses" and "Incomes"
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => toggleScreen("expense"), // Change to "expense"
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: displayed_screen == "expense" ? AppColors.primary : AppColors.offWhite,
+                        border: Border.all(
+                          color: displayed_screen == "expense" ? Colors.transparent : AppColors.primary,
+                          width: 1.5
+                        ),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomLeft: Radius.circular(10),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Expenses",
+                          style: MoneyBodyTextStyle(
+                            color: displayed_screen == "expense" ? AppColors.offWhite : AppColors.primary,
+                            fontSize: 17,
+                          ).textStyle,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => toggleScreen("income"), // Change to "income"
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: displayed_screen == "income" ? AppColors.primary : AppColors.offWhite,
+                        border: Border.all(
+                          color: displayed_screen == "income" ? Colors.transparent : AppColors.primary,
+                          width: 1.5
+                        ),
+                        borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Incomes",
+                          style: MoneyBodyTextStyle(
+                            color: displayed_screen == "income" ? Colors.white : AppColors.primary,
+                            fontSize: 17,
+                          ).textStyle,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 20),
+
+            // Show the ExpenseHomePage if "expense" is selected, otherwise show "Income"
+            Expanded(
+              child: displayed_screen == "expense"
+                  ? ExpenseHomePage() // Render ExpenseHomePage
+                  : Center(child: Text("Income Content Here")), // Placeholder for "Incomes"
+            ),
+          ],
         ),
       ),
     );
