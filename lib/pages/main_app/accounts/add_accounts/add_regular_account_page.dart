@@ -1,10 +1,11 @@
+import 'package:expense_tracker/myComponents/AccountTextField.dart';
+import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:expense_tracker/myComponents/MyColorBox.dart';
-import 'package:expense_tracker/myComponents/MyPlusButton.dart';
 import 'package:flutter_iconpicker/Models/configuration.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 
@@ -17,9 +18,9 @@ class AddRegularAccountPage extends StatefulWidget {
 
 class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
   Color selectedColor = Colors.blue;
-  Icon? selectedIcon = const Icon(
-    Icons.credit_card_rounded,
-    size: 45.0,
+  Icon selectedIcon = const Icon(
+    FontAwesomeIcons.ccVisa,
+    size: 33.0,
     color: Colors.blue,
   );
 
@@ -40,14 +41,11 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
               onColorChanged: (Color color) {
                 setState(() {
                   selectedColor = color;
-                  // Update the icon color dynamically
-                  if (selectedIcon != null) {
-                    selectedIcon = Icon(
-                      selectedIcon!.icon, // Retain the existing icon data
-                      color: selectedColor,
-                      size: 45.0,
-                    );
-                  }
+                  selectedIcon = Icon(
+                    selectedIcon.icon, 
+                    color: selectedColor,
+                    size: 33.0,
+                  );
                 });
               },
             ),
@@ -56,7 +54,7 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
             TextButton(
               child: Text(
                 'Select',
-                style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 18).textStyle,
               ),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -72,17 +70,17 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
     IconPickerIcon? icon = await showIconPicker(
       context,
       configuration: SinglePickerConfiguration(
-        iconPackModes: [IconPack.roundedMaterial],
+        iconPackModes: [IconPack.fontAwesomeIcons],
         title: Align(
           alignment: Alignment.center,
           child: Text(
             'Pick an icon',
-            style: NormalHeaderTextStyle(color: Colors.black).textStyle,
+            style: BoldHeaderTextStyle(color: Colors.black).textStyle,
           ),
         ),
         closeChild: Text(
           'Select',
-          style: NormalBodyTextStyle(color: AppColors.primary).textStyle,
+          style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 18).textStyle,
         ),
       ),
     );
@@ -92,22 +90,22 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
         selectedIcon = Icon(
           icon.data,
           color: selectedColor,
-          size: 45.0,
+          size: 33.0,
         );
       });
-      debugPrint('Picked Icon: $icon');
+      debugPrint("Selected icon: ${selectedIcon!.icon!.codePoint}");
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.offWhite,
+      backgroundColor: AppColors.primary,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.offWhite,
         leading: IconButton(
-          icon: const Icon(Ionicons.arrow_back),
+          icon: const Icon(Ionicons.chevron_back),
           iconSize: 30.0,
           onPressed: () {
             Navigator.pop(context);
@@ -120,188 +118,154 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Account Name",
-                  style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                ),
-              ),
-              const SizedBox(height: 5.0),
-              TextField(
-                controller: accountNameController,
-                decoration: const InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
-                  hintText: "Card, cash...",
-                  hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                      style: BorderStyle.solid,
-                      width: 1.4,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      style: BorderStyle.solid,
-                      width: 1.4,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Description",
-                  style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                ),
-              ),
-              const SizedBox(height: 5.0),
-              TextField(
-                controller: descriptionController,
-                decoration: const InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
-                  hintText: "What is your account used for...",
-                  hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
-                  filled: true,
-                  fillColor: AppColors.offWhite,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                      style: BorderStyle.solid,
-                      width: 1.4,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      style: BorderStyle.solid,
-                      width: 1.4,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
+          children: [Container(
+            margin: const EdgeInsets.only(top: 10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+              color: AppColors.offWhite,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
+              child: Column(
                 children: [
-                  Column(
-                    children: [
-                      Text(
-                        "Choose icon:",
-                        style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                      ),
-                      const SizedBox(height: 5.0),
-                      GestureDetector(
-                        onTap: openIconPicker,
-                        child: Container(
-                          width: 125,
-                          height: 70.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            border: Border.all(width: 1.2, color: Colors.grey),
-                          ),
-                          child: Center(
-                            child: selectedIcon ??
-                                const Icon(Icons.credit_card_rounded), // Default fallback
-                          ),
-                        ),
-                      ),
-                    ],
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Account Name",
+                      style: BoldBodyTextStyle(color: Colors.black).textStyle,
+                    ),
                   ),
+                  const SizedBox(height: 5.0),
+                  AccountTextField(hint: "Account Name", textEditingController: accountNameController),
+                  const SizedBox(height: 15.0),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Description",
+                      style: BoldBodyTextStyle(color: Colors.black).textStyle,
+                    ),
+                  ),
+                  const SizedBox(height: 5.0),
+                  AccountTextField(hint: "Short note...", textEditingController: descriptionController),
+                  const SizedBox(height: 15.0),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: Column(
+                        children: [
+                          Row(children: [
+                            Expanded(child: Text("Pick Icon", style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,)),
+                            Expanded(child: Text("Pick Color",style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,),)
+                          ],),
+                          const SizedBox(height: 5.0),
+                          Row(children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: openIconPicker,
+                                child: Container(
+                                  height: 60,
+                                  decoration: const BoxDecoration(
+                                    color: AppColors.darkerGray,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(18),
+                                      bottomLeft: Radius.circular(18)
+                                    ),
+                                    border: Border(
+                                      right: BorderSide(
+                                        color: AppColors.textGray,
+                                        width: 1
+                                      ),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                                    child: selectedIcon,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: openColorPicker,
+                                child: Container(
+                                  height: 60,
+                                  decoration: const BoxDecoration(
+                                    color: AppColors.darkerGray,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(18),
+                                      bottomRight: Radius.circular(18)
+                                    ),
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.textGray,
+                                        width: 1.2
+                                      ),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                                    child: Icon(FontAwesomeIcons.droplet, size: 33, color: selectedColor,),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],),
+                        ],
+                      ),
+                    ),
                   const SizedBox(height: 25.0),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Icon color:",
-                        style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                        "Initial Balance (EUR): ",
+                        style: BoldBodyTextStyle(color: Colors.black).textStyle,
                       ),
-                      const SizedBox(height: 5.0),
-                      GestureDetector(
-                        onTap: openColorPicker,
-                        child: Container(
-                          width: 125,
-                          height: 70.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            border: Border.all(width: 1.2, color: Colors.grey),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              MyColorBox(color_: selectedColor),
-                            ],
-                          ),
-                        ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      TextField(
+                        controller: initialBalanceController,
+                        textAlign: TextAlign.center,
+                        style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                        decoration: InputDecoration(
+                          fillColor: AppColors.darkerGray,
+                          hintText: "0,00",
+                          hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                          filled: true,
+                          border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(18)),
+                            borderSide: BorderSide.none),
+                          focusedBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(18)),
+                            borderSide: BorderSide(width: 1)),
+                        )
                       ),
                     ],
                   ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  RoundedActionButton(
+                      function: () {
+                        final accountData = {
+                          'accountName': accountNameController.text,
+                          'description': descriptionController.text,
+                          'initialBalance': double.tryParse(initialBalanceController.text) ?? 0.0,
+                          'selectedIcon': selectedIcon.icon?.codePoint,
+                          'selectedColor': selectedColor.value,
+                        };
+            
+                        Navigator.pop(context, accountData);
+              }, label: 'Add',),
                 ],
               ),
-              const SizedBox(height: 25.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                child: Column(
-                  children: [
-                    Text(
-                      "Initial Balance (€): ",
-                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                    ),
-                    const SizedBox(width: 15.0),
-                    TextField(
-                      controller: initialBalanceController,
-                      style: const TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 35.0,
-                          color: Colors.black),
-                      keyboardType:
-                          const TextInputType.numberWithOptions(decimal: true),
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        hintText: "0",
-                        hintStyle:
-                            TextStyle(fontFamily: 'Poppins', fontSize: 35.0),
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-                        filled: true,
-                        fillColor: AppColors.offWhite,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 30.0,
-              ),
-              MyPlusButton(
-                  function_: () {
-                    final accountData = {
-                      'accountName': accountNameController.text,
-                      'description': descriptionController.text,
-                      'initialBalance': double.tryParse(initialBalanceController.text) ?? 0.0,
-                      'selectedIcon': selectedIcon,
-                      'selectedColor': selectedColor,
-                    };
-
-                    Navigator.pop(context, accountData);
-                  }),
-            ],
+            ),
           ),
-        ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.4,
+            color: AppColors.offWhite,
+          )
+        ]),
       ),
     );
   }

@@ -1,7 +1,9 @@
+import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
-import 'package:expense_tracker/myComponents/MyLoginButton.dart';
+import 'package:expense_tracker/myComponents/MyButton.dart';
 import 'package:expense_tracker/myComponents/MyTextField.dart';
+import 'package:ionicons/ionicons.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -17,10 +19,10 @@ class LoginPage extends StatelessWidget {
           onPressed: (){
             Navigator.pop(context);
           }, 
-          icon: const Icon(Icons.arrow_back_rounded),
+          icon: const Icon(Ionicons.chevron_back),
           iconSize: 30.0
         ),
-        title: const Text("Sign in", style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),),
+        title: Text("Sign in", style: BoldHeaderTextStyle(color: Colors.black).textStyle,),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -47,13 +49,10 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  const Align(
+                  Align(
                     alignment: Alignment.center,
                     child: Text("Forgot password?",
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primary)),
+                        style: BoldVariableFontTextStyle(color: AppColors.primary, fontSize: 14).textStyle),
                   ),
                   const SizedBox(
                     height: 20,
@@ -87,7 +86,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   child: ListTile(
                     leading: Image.asset('assets/images/google_logo.png', width: 40,),
-                    title: const Text("Continue with Google", style: TextStyle(fontSize: 17), textAlign: TextAlign.center,),
+                    title: Text("Continue with Google", style: NormalBodyTextStyle(color: AppColors.textGray).textStyle, textAlign: TextAlign.center,),
                     trailing: const Text(""),
                   ),
                  )

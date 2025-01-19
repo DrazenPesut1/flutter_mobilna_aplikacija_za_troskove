@@ -1,3 +1,5 @@
+// ignore: file_names
+import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 
@@ -15,12 +17,13 @@ class MyButton extends StatelessWidget{
         child: ElevatedButton(
         onPressed: action,
         style: ElevatedButton.styleFrom(
+          elevation: 0,
         foregroundColor: AppColors.offWhite,
         backgroundColor: AppColors.primary,
         textStyle: const TextStyle(fontSize: 21),
         shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)))),
-        child: Text(text),
+        child: Text(text, style: BoldVariableFontTextStyle(color: AppColors.offWhite, fontSize: 18).textStyle,),
       ),
     );
   }

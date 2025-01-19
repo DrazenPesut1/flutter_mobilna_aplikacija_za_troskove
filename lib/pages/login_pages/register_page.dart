@@ -1,7 +1,9 @@
+import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
-import 'package:expense_tracker/myComponents/MyLoginButton.dart';
+import 'package:expense_tracker/myComponents/MyButton.dart';
 import 'package:expense_tracker/myComponents/MyTextField.dart';
+import 'package:ionicons/ionicons.dart';
 
 class RegisterPage extends StatelessWidget{
   const RegisterPage({super.key});
@@ -17,10 +19,10 @@ class RegisterPage extends StatelessWidget{
           onPressed: (){
             Navigator.pop(context);
           }, 
-          icon: const Icon(Icons.arrow_back_rounded),
+          icon: const Icon(Ionicons.chevron_back),
           iconSize: 30.0
         ),
-        title: const Text("Sign up", style: TextStyle(fontSize: 23.0, fontWeight: FontWeight.bold),),
+        title: Text("Sign up", style: BoldHeaderTextStyle(color: Colors.black).textStyle,),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -80,7 +82,7 @@ class RegisterPage extends StatelessWidget{
                   ),
                   child: ListTile(
                     leading: Image.asset('assets/images/google_logo.png', width: 40,),
-                    title: const Text("Continue with Google", style: TextStyle(fontSize: 17), textAlign: TextAlign.center,),
+                    title: Text("Continue with Google", style: NormalBodyTextStyle(color: AppColors.textGray).textStyle, textAlign: TextAlign.center,),
                     trailing: const Text(""),
                   ),
                  )

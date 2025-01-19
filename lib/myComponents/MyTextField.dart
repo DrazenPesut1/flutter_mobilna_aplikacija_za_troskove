@@ -1,3 +1,5 @@
+import 'package:expense_tracker/styles/app_colors.dart';
+import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget{
@@ -12,9 +14,10 @@ class MyTextField extends StatelessWidget{
       obscureText: isPassword,
       decoration: InputDecoration(
         prefixIcon: Icon(icon),
-        labelText: label,
-        labelStyle: const TextStyle(fontSize: 14.0, fontFamily: 'Poppins'),
+        hintText: label,
+        hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 15).textStyle,
         filled: true,
+        fillColor: AppColors.darkerGray,
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           borderSide: BorderSide.none),

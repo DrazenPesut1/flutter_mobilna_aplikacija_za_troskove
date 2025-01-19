@@ -1,7 +1,7 @@
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeActionButton extends StatelessWidget{
   final String button_label;
@@ -19,26 +19,27 @@ class HomeActionButton extends StatelessWidget{
     return Column(
               children: [
                 Container(
-                  width: 60,  // Set the container width for the button
-                  height: 60,  // Set the container height for the button
-                  decoration: BoxDecoration(
-                    color: AppColors.offWhite,  // Set the background color to white
-                    borderRadius: BorderRadius.circular(15),  // Rounded corners
-                    border: Border.all(color: Colors.grey),  // Set the border color to gray
+                  width: 65, 
+                  height: 65, 
+                  decoration: BoxDecoration(  
+                    borderRadius: BorderRadius.circular(20),  
                   ),
                   child: ElevatedButton(
                     onPressed: function, 
                     style: ElevatedButton.styleFrom(
-                      elevation: 0,  // Remove the default shadow
+                      backgroundColor: AppColors.darkerGray,
+                      elevation: 0, 
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),  // Rounded corners
+                        borderRadius: BorderRadius.circular(18),  
                       ),
                       padding: EdgeInsets.zero,
                     ),
-                    child: button_icon
+                    child: button_icon.icon != FontAwesomeIcons.moneyBillTransfer 
+                    ? button_icon
+                    : Padding(padding: EdgeInsets.only(right: 6.5), child: button_icon,)
                   ),
                 ),
-    const SizedBox(height: 3,),
-    Text(button_label, style: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 13).textStyle,),]);
+    const SizedBox(height: 8,),
+    Text(button_label, style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 14).textStyle)]);
   }
 }

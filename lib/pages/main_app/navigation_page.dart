@@ -4,7 +4,7 @@ import 'package:expense_tracker/pages/main_app/statistics_page.dart';
 import 'package:expense_tracker/pages/main_app/transactions_page.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -22,18 +22,17 @@ class _NavigationPageState extends State<NavigationPage> {
     const AccountsPage(),
   ];
 
-  int balance = 1000;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            height: 75.0,
-            backgroundColor: AppColors.offWhite,
+            height: 70.0,
             shadowColor: Colors.black,
-            elevation: 12,
+            backgroundColor: AppColors.offWhite,
+            indicatorColor: AppColors.offWhite,
+            elevation: 20,
             iconTheme: WidgetStateProperty.resolveWith<IconThemeData>(
                 (Set<WidgetState> states) {
               final isSelected = states.contains(WidgetState.selected);
@@ -45,28 +44,28 @@ class _NavigationPageState extends State<NavigationPage> {
                 (Set<WidgetState> states) {
               final isSelected = states.contains(WidgetState.selected);
               return TextStyle(
-                color: isSelected ? AppColors.primary : Colors.black,
-                fontSize: 13,
+                color: isSelected ? AppColors.primary : AppColors.textGray,
+                fontSize: 13, fontFamily: 'Poppins'
               );
             })
           ),
         child: NavigationBar(
           destinations: const [
             NavigationDestination(
-                icon: Icon(Ionicons.home_outline),
-                selectedIcon: Icon(Ionicons.home),
+                icon: Icon(FontAwesomeIcons.house, color: AppColors.textGray,),
+                selectedIcon: Icon(FontAwesomeIcons.house),
                 label: "Home"),
             NavigationDestination(
-                icon: Icon(Ionicons.receipt_outline),
-                selectedIcon: Icon(Ionicons.receipt),
+                icon: Icon(FontAwesomeIcons.receipt, color: AppColors.textGray),
+                selectedIcon: Icon(FontAwesomeIcons.receipt),
                 label: "Transactions"),
             NavigationDestination(
-                icon: Icon(Ionicons.stats_chart_outline),
-                selectedIcon: Icon(Ionicons.stats_chart),
+                icon: Icon(FontAwesomeIcons.chartPie, color: AppColors.textGray),
+                selectedIcon: Icon(FontAwesomeIcons.chartPie),
                 label: "Statistics"),
             NavigationDestination(
-                icon: Icon(Ionicons.wallet_outline),
-                selectedIcon: Icon(Ionicons.wallet),
+                icon: Icon(FontAwesomeIcons.wallet, color: AppColors.textGray),
+                selectedIcon: Icon(FontAwesomeIcons.wallet),
                 label: "Accounts"),
           ],
           selectedIndex: currentIndex,

@@ -38,6 +38,7 @@ class _AccountsPageState extends State<AccountsPage> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
+        elevation: 0,
         leading: IconButton(
           onPressed: (){
             
@@ -50,15 +51,18 @@ class _AccountsPageState extends State<AccountsPage> with TickerProviderStateMix
         centerTitle: true,
         surfaceTintColor: AppColors.offWhite,
         backgroundColor: AppColors.offWhite,
-        bottom: TabBar(
-          tabs: myTabs,
-          labelColor: AppColors.primary,
-          labelStyle: NormalBodyTextStyle(color: Colors.black).textStyle,
-          unselectedLabelColor: Colors.black,
-          indicatorColor: AppColors.primary,
-          indicatorSize: TabBarIndicatorSize.tab,
-          indicatorWeight: 3,
-          controller: tabController,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(50),
+          child: TabBar(
+            tabs: myTabs,
+            labelColor: AppColors.primary,
+            labelStyle: BoldBodyTextStyle(color: AppColors.textGray).textStyle,
+            unselectedLabelColor: AppColors.textGray,
+            indicatorColor: AppColors.primary,
+            indicatorSize: TabBarIndicatorSize.label,
+            indicatorWeight: 2,
+            controller: tabController,
+          ),
         ),
       ),
       body: TabBarView(

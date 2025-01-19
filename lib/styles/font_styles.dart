@@ -1,130 +1,162 @@
 import 'package:flutter/material.dart';
 
 class NormalBodyTextStyle {
-  // Predefined values for font weight, size, and family
   final double fontSize;
   final FontWeight fontWeight;
   final String fontFamily;
-  final Color color;  
-  
-  // Constructor that allows customization of color only
+  final Color color;
+
   NormalBodyTextStyle({
-    required this.color,               // Only color is passed in
-    this.fontSize = 16.0,              // Default font size
-    this.fontWeight = FontWeight.normal,  // Default font weight
-    this.fontFamily = 'Poppins',        // Default font family                // Default line height
+    required this.color,
+    this.fontSize = 15.0,
+    this.fontWeight = FontWeight.normal,
+    this.fontFamily = 'Montserrat',
   });
 
-  // Method to return the TextStyle
   TextStyle get textStyle {
     return TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
       fontFamily: fontFamily,
-      color: color,                    // Color passed through constructor
+      color: color,
     );
   }
 }
 
 class BoldBodyTextStyle {
-  // Predefined values for font weight, size, and family
   final double fontSize;
   final FontWeight fontWeight;
   final String fontFamily;
-  final Color color;  
-  
-  // Constructor that allows customization of color only
+  final Color color;
+
   BoldBodyTextStyle({
-    required this.color,               // Only color is passed in
-    this.fontSize = 16.0,              // Default font size
-    this.fontWeight = FontWeight.bold,  // Default font weight
-    this.fontFamily = 'Poppins',        // Default font family                // Default line height
+    required this.color,
+    this.fontSize = 15.0,
+    this.fontWeight = FontWeight.bold,
+    this.fontFamily = 'Montserrat',
   });
 
-  // Method to return the TextStyle
   TextStyle get textStyle {
     return TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
       fontFamily: fontFamily,
-      color: color,                    // Color passed through constructor
+      color: color,
     );
   }
 }
 
 class NormalHeaderTextStyle {
-  // Predefined values for font weight, size, and family
   final double fontSize;
   final FontWeight fontWeight;
   final String fontFamily;
-  final Color color;  
-  
-  // Constructor that allows customization of color only
+  final Color color;
+
   NormalHeaderTextStyle({
-    required this.color,               // Only color is passed in
-    this.fontSize = 21.0,              // Default font size
-    this.fontWeight = FontWeight.normal,  // Default font weight
-    this.fontFamily = 'Poppins',        // Default font family                // Default line height
+    required this.color,
+    this.fontSize = 21.0,
+    this.fontWeight = FontWeight.normal,
+    this.fontFamily = 'Montserrat',
   });
 
-  // Method to return the TextStyle
   TextStyle get textStyle {
     return TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
       fontFamily: fontFamily,
-      color: color,                    // Color passed through constructor
+      color: color,
     );
   }
 }
 
 class BoldHeaderTextStyle {
-  // Predefined values for font weight, size, and family
   final double fontSize;
   final FontWeight fontWeight;
   final String fontFamily;
-  final Color color;  
-  
-  // Constructor that allows customization of color only
+  final Color color;
+
   BoldHeaderTextStyle({
-    required this.color,               // Only color is passed in
-    this.fontSize = 21.0,              // Default font size
-    this.fontWeight = FontWeight.bold,  // Default font weight
-    this.fontFamily = 'Poppins',        // Default font family                // Default line height
+    required this.color,
+    this.fontSize = 21.0,
+    this.fontWeight = FontWeight.bold,
+    this.fontFamily = 'Montserrat',
   });
 
-  // Method to return the TextStyle
   TextStyle get textStyle {
     return TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
       fontFamily: fontFamily,
-      color: color,                    // Color passed through constructor
+      color: color,
     );
   }
 }
 
-class MoneyBodyTextStyle{
+class MoneyBodyTextStyle {
   final double fontSize;
   final FontWeight fontWeight;
   final String fontFamily;
-  final Color color;  
-  
-  // Constructor that allows customization of color only
+  final Color color;
+
   MoneyBodyTextStyle({
-    required this.color,               // Only color is passed in
-    required this.fontSize,              // Default font size
-    this.fontWeight = FontWeight.bold,  // Default font weight
-    this.fontFamily = 'Poppins',        // Default font family                // Default line height
+    required this.color,
+    required this.fontSize,
+    this.fontWeight = FontWeight.bold,
+    this.fontFamily = 'Poppins',
   });
 
-  // Method to return the TextStyle
   TextStyle get textStyle {
     return TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
       fontFamily: fontFamily,
-      color: color,                    // Color passed through constructor
+      color: color,
+    );
+  }
+}
+
+class NormalVariableFontTextStyle {
+  final double fontSize;
+  final FontWeight fontWeight;
+  final String fontFamily;
+  final Color color;
+
+  NormalVariableFontTextStyle({
+    required this.color,
+    required this.fontSize,
+    this.fontWeight = FontWeight.normal,
+    this.fontFamily = 'Montserrat',
+  });
+
+  TextStyle get textStyle {
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      fontFamily: fontFamily,
+      color: color,
+    );
+  }
+}
+
+class BoldVariableFontTextStyle {
+  final double fontSize;
+  final FontWeight fontWeight;
+  final String fontFamily;
+  final Color color;
+
+  BoldVariableFontTextStyle({
+    required this.color,
+    required this.fontSize,
+    this.fontWeight = FontWeight.bold,
+    this.fontFamily = 'Montserrat',
+  });
+
+  TextStyle get textStyle {
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      fontFamily: fontFamily,
+      color: color,
     );
   }
 }

@@ -1,7 +1,7 @@
+import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/myComponents/MyLoginButton.dart';
+import 'package:expense_tracker/myComponents/MyButton.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
-import 'package:page_transition/page_transition.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -28,23 +28,17 @@ class WelcomePage extends StatelessWidget {
             const SizedBox(
               height: 20.0,
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Column(
                 children: [
                   Text(
                     "The best way to track and manage your finances.",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 14).textStyle,
                     textAlign: TextAlign.center,
                   ),
                   Text("Never worry about spending a dime again!",
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.bold,
-                  )
+                      style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 14).textStyle
                   ),
                 ],
               ),
@@ -52,30 +46,29 @@ class WelcomePage extends StatelessWidget {
             const SizedBox(
               height: 50.0,
             ),
-            const Text("Let's get started",
-                style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+            Text("Let's get started",
+                style: BoldBodyTextStyle(color: Colors.black).textStyle),
             const SizedBox(
               height: 50.0,
             ),
-            MyButton("Create account", 285.0, () {
+            MyButton("Create account", 260.0, () {
               Navigator.pushNamed(context, '/register_page');
             }),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   "Already have an account?",
-                  style: TextStyle(fontFamily: 'Lato', fontSize: 14),
+                  style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 14).textStyle,
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/login_page')
                     ;
                   },
-                  child: const Text(
+                  child: Text(
                     "Sign in",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: AppColors.primary),
+                    style: BoldVariableFontTextStyle(color: AppColors.primary, fontSize: 14).textStyle,
                   ),
                 ),
               ],

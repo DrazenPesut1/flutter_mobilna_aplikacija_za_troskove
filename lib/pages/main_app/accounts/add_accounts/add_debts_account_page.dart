@@ -1,16 +1,12 @@
+import 'package:expense_tracker/myComponents/AccountTextField.dart';
+import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter_iconpicker/Models/configuration.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:expense_tracker/myComponents/MyColorBox.dart';
-import 'package:expense_tracker/myComponents/MyPlusButton.dart';
-import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 
 class AddDebtsAccountPage extends StatefulWidget{
   const AddDebtsAccountPage({super.key});
@@ -24,7 +20,6 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
   Icon? selectedIcon = const Icon(Icons.car_repair_rounded, size: 45.0, color: Colors.blue,);
   double initial_amount = 0;
   double goal = 0;
-  final ValueNotifier<double> _valueNotifier = ValueNotifier(0);
   double progress = 0;
 
   String? selectedType = 'I owe';
@@ -33,18 +28,6 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController initialPaidOffAmountController = TextEditingController();
   final TextEditingController debtGoalAmountController = TextEditingController();
-
-  void updateProgressBar(){
-    setState(() {
-      if(goal == 0 || initial_amount == 0){
-        progress = 0;
-      } else if(goal > initial_amount){
-        progress = (initial_amount * 1.0 / goal) * 100.0;
-      } else if(goal <= initial_amount){
-        progress = 100.0;
-      }
-    });
-  }
 
   void openColorPicker() {
   showDialog(
@@ -58,10 +41,9 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
             onColorChanged: (Color color) {
               setState(() {
                 selectedColor = color;
-                // Update the icon color dynamically
                 if (selectedIcon != null) {
                   selectedIcon = Icon(
-                    selectedIcon!.icon, // Retain the existing icon data
+                    selectedIcon!.icon, 
                     color: selectedColor,
                     size: 45.0,
                   );
@@ -115,333 +97,278 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.offWhite,
-      appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.offWhite,
-        leading: IconButton(
-          icon: const Icon(Ionicons.arrow_back),
-          iconSize: 30.0,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: Text(
-          "Add Debts Account",
-          style: BoldHeaderTextStyle(color: AppColors.offWhite).textStyle,
-        ),
-        centerTitle: true,
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: AppColors.primary,
+    appBar: AppBar(
+      backgroundColor: AppColors.primary,
+      foregroundColor: AppColors.offWhite,
+      leading: IconButton(
+        icon: const Icon(Ionicons.chevron_back),
+        iconSize: 30.0,
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Account Name",
-                  style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                ),
-              ),
-              const SizedBox(height: 5.0),
-              TextField(
-                controller: accountNameController,
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
-                  hintText: "Car payment, mortgage, small loan...",
-                  hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
-                  filled: true,
-                  fillColor: AppColors.offWhite,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                      style: BorderStyle.solid,
-                      width: 1.2,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      style: BorderStyle.solid,
-                      width: 1.2,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Description",
-                  style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                ),
-              ),
-              const SizedBox(height: 5.0),
-              TextField(
-                controller: descriptionController,
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 18.0),
-                  hintText: "What is your account used for...",
-                  hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: 15.0),
-                  filled: true,
-                  fillColor: AppColors.offWhite,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide(
-                      color: Colors.grey,
-                      style: BorderStyle.solid,
-                      width: 1.4,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide(
-                      color: Colors.black,
-                      style: BorderStyle.solid,
-                      width: 1.4,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 25.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+      title: Text(
+        "Add Debts Account",
+        style: BoldHeaderTextStyle(color: AppColors.offWhite).textStyle,
+      ),
+      centerTitle: true,
+    ),
+    body: SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+              color: AppColors.offWhite,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
+              child: Column(
                 children: [
-                  Column(
-                    children: [
-                      Text(
-                        "Choose icon:",
-                        style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                      ),
-                      const SizedBox(height: 5.0),
-                  GestureDetector(
-                    onTap: openIconPicker,
-                    child: Container(
-                      width: 140,
-                      height: 70.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(width: 1.4, color: Colors.grey),
-                      ),
-                      child: Center(
-                        child: selectedIcon ?? const Icon(Icons.credit_card_rounded), // Default fallback
-                      ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Account Name",
+                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
                     ),
-                  ),
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Icon color:",
-                    style: NormalBodyTextStyle(color: Colors.black).textStyle,
                   ),
                   const SizedBox(height: 5.0),
-                  GestureDetector(
-                    onTap: openColorPicker,
-                    child: Container(
-                      width: 140,
-                      height: 70.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.0),
-                        border: Border.all(width: 1.4, color: Colors.grey),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          MyColorBox(color_: selectedColor),
-                        ],
-                      ),
+                  AccountTextField(hint: "Car payment, mortgage, small loan...", textEditingController: accountNameController),
+                  const SizedBox(height: 15.0),
+          
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Description",
+                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
                     ),
                   ),
-                ],
-              ),
-                    ],
-              ),
-              const SizedBox(height: 20.0,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(                 
-                    width: 140.0,
-                    child: RadioMenuButton(
-                      value: "I owe", 
-                      groupValue: selectedType, 
-                      onChanged: (selectedValue){
-                        setState(() {
-                          selectedType = selectedValue;
-                        });
-                      },
-                      style: ButtonStyle(
-                        shape: WidgetStatePropertyAll(
-                          RoundedRectangleBorder(
-                            side: const BorderSide(color: Colors.grey, width: 1.4, style: BorderStyle.solid),
-                            borderRadius: BorderRadius.circular(12.0))
-                        )
-                      ),
-                      child: Text('I owe', style: NormalBodyTextStyle(color: Colors.black).textStyle,)
-                    ),
-                  ),
-                  SizedBox(
-                    width: 140.0,
-                    child: RadioMenuButton(
-                      value: "I am owed", 
-                      groupValue: selectedType, 
-                      onChanged: (selectedValue){
-                        setState(() {
-                          selectedType = selectedValue;
-                        });
-                      },
-                      style: ButtonStyle(
-                        shape: WidgetStatePropertyAll(
-                          RoundedRectangleBorder(
-                            side: const BorderSide(color: Colors.grey, width: 1.4, style: BorderStyle.solid),
-                            borderRadius: BorderRadius.circular(12.0))
-                        )
-                      ),
-                      child: Text('I am owed', style: NormalBodyTextStyle(color: Colors.black).textStyle,)
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 25.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [SizedBox(
-                  width: 155,
-                  child: Column(
+                  const SizedBox(height: 5.0),
+                  AccountTextField(hint: "What is your account used for...", textEditingController: descriptionController),
+                  const SizedBox(height: 25.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Initial amount (€): ",
-                        style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                      ),
-                      const SizedBox(width: 15.0),
-                      TextField(
-                        controller: initialPaidOffAmountController,
-                        onSubmitted: (value){
-                          setState(() {
-                            initial_amount = double.tryParse(value)!;
-                            updateProgressBar();
-                          }
-                        );
-                        },
-                        style: const TextStyle(fontFamily: 'Poppins', fontSize: 35.0, color: Colors.black),
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*'))],
-                        textAlign: TextAlign.center,
-                        decoration: const InputDecoration(
-                          hintText: "0",
-                          hintStyle:
-                              TextStyle(fontFamily: 'Poppins', fontSize: 35.0),
-                          contentPadding:
-                              EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-                          filled: true,
-                          fillColor: AppColors.offWhite,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 155,
-                  child: Column(
-                    children: [
-                      Text(
-                        "Goal: ",
-                        style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                      ),
-                      const SizedBox(width: 15.0),
-                      TextField(
-                        controller: debtGoalAmountController,
-                        onSubmitted: (value){
-                          setState(() {
-                            goal = double.tryParse(value)!;
-                            updateProgressBar();
-                          });
-                        },
-                        style: const TextStyle(fontFamily: 'Poppins', fontSize: 35.0, color: Colors.black),
-                        keyboardType:
-                            const TextInputType.numberWithOptions(decimal: true),
-                        textAlign: TextAlign.center,
-                        decoration: const InputDecoration(
-                          hintText: "0",
-                          hintStyle:
-                              TextStyle(fontFamily: 'Poppins', fontSize: 35.0),
-                          contentPadding:
-                              EdgeInsets.symmetric(vertical: 0, horizontal: 5),
-                          filled: true,
-                          fillColor: AppColors.offWhite,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                ],
-              ),
-              const SizedBox(
-                height: 25.0,
-              ),
-              SizedBox(
-                width: 120,
-                height: 120,
-                child: DashedCircularProgressBar.aspectRatio(
-                  aspectRatio: 1, // width ÷ height
-                  valueNotifier: _valueNotifier,
-                  progress: progress,
-                  startAngle: 0,
-                  sweepAngle: 360,
-                  foregroundColor: selectedColor,
-                  backgroundColor: const Color(0xffeeeeee),
-                  foregroundStrokeWidth: 10,
-                  backgroundStrokeWidth: 10,
-                  animation: true,
-                  seekSize: 6,
-                  seekColor: const Color(0xffeeeeee),
-                  child: Center(
-                    child: ValueListenableBuilder(
-                      valueListenable: _valueNotifier,
-                      builder: (_, double value, __) => Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            '${value.toInt()}%',
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w300,
-                              fontSize: 30
+                      Expanded(
+                        child: SizedBox(
+                          width: 140.0,
+                          child: RadioMenuButton(
+                            value: "I am owed",
+                            groupValue: selectedType,
+                            onChanged: (selectedValue) {
+                              setState(() {
+                                selectedType = selectedValue;
+                              });
+                            },
+                            style: ButtonStyle(
+                              shape: WidgetStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ),
+                              ),
+                              backgroundColor: WidgetStateProperty.all(AppColors.darkerGray),
+                            ),
+                            child: Text(
+                              'I am owed',
+                              style: NormalBodyTextStyle(color: Colors.black).textStyle,
                             ),
                           ),
-                        ],
-                      )
-                    ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          child: RadioMenuButton(
+                            value: "I owe",
+                            groupValue: selectedType,
+                            onChanged: (selectedValue) {
+                              setState(() {
+                                selectedType = selectedValue;
+                              });
+                            },
+                            style: ButtonStyle(
+                              shape: WidgetStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                ),
+                              ),
+                              backgroundColor: WidgetStateProperty.all(AppColors.darkerGray),
+                            ),
+                            child: Text(
+                              'I owe',
+                              style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
+          
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text("Choose Icon", style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
+                      ),
+                      Expanded(
+                        child: Text("Icon Color", style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5.0),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: openIconPicker,
+                          child: Container(
+                            height: 60,
+                            decoration: const BoxDecoration(
+                              color: AppColors.darkerGray,
+                              borderRadius: BorderRadius.only(topLeft: Radius.circular(18), bottomLeft: Radius.circular(18)),
+                              border: Border(
+                                right: BorderSide(
+                                  color: AppColors.textGray,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                              child: selectedIcon ?? const Icon(Ionicons.card),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: openColorPicker,
+                          child: Container(
+                            height: 60,
+                            decoration: const BoxDecoration(
+                              color: AppColors.darkerGray,
+                              borderRadius: BorderRadius.only(topRight: Radius.circular(18), bottomRight: Radius.circular(18)),
+                              border: Border(
+                                left: BorderSide(
+                                  color: AppColors.textGray,
+                                  width: 1.2,
+                                ),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                              child: Icon(Ionicons.color_palette, size: 33, color: selectedColor),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 25.0),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "Initial amount: ",
+                          style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(
+                          "Goal: ",
+                          style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5.0),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: initialPaidOffAmountController,
+                          textAlign: TextAlign.center,
+                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                          decoration: InputDecoration(
+                            fillColor: AppColors.darkerGray,
+                            hintText: "0",
+                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                            filled: true,
+                            border: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(18)),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(18)),
+                              borderSide: BorderSide(width: 1),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: TextField(
+                          controller: debtGoalAmountController,
+                          textAlign: TextAlign.center,
+                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                          decoration: InputDecoration(
+                            fillColor: AppColors.darkerGray,
+                            hintText: "0",
+                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                            filled: true,
+                            border: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(18)),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: const OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(18)),
+                              borderSide: BorderSide(width: 1),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30.0),
+                  RoundedActionButton(
+                    function: () {
+                      final accountData = {
+                        'accountName': accountNameController.text,
+                        'description': descriptionController.text,
+                        'initialPaidOffAmount': double.tryParse(initialPaidOffAmountController.text) ?? 0.0,
+                        'debtGoalAmount': double.tryParse(debtGoalAmountController.text) ?? 0.0,
+                        'selectedIcon': selectedIcon!.icon?.codePoint,
+                        // ignore: deprecated_member_use
+                        'selectedColor': selectedColor.value,
+                        'selectedType' : selectedType ?? 'I owe'
+                      };
+          
+                      Navigator.pop(context, accountData);
+                    },
+                    label: 'Add',
+                  ),
+                ],
               ),
-              const SizedBox(height: 25.0),
-              MyPlusButton(function_: () {
-                final accountData = {
-                  'accountName': accountNameController.text,
-                  'description': descriptionController.text,
-                  'initialPaidOffAmount': double.tryParse(initialPaidOffAmountController.text) ?? 0.0,
-                  'debtGoalAmount': double.tryParse(debtGoalAmountController.text) ?? 0.0,
-                  'selectedIcon': selectedIcon,
-                  'selectedColor': selectedColor,
-                  'selectedType': selectedType
-                };
-
-                Navigator.pop(context, accountData);
-              }),
-            ],
+            ),
           ),
-        ),
+          Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              color: AppColors.offWhite,
+            )
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
+
+
 }
   

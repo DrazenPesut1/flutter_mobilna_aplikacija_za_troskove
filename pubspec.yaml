@@ -14,19 +14,18 @@ dependencies:
   cupertino_icons: ^1.0.8
   font_awesome_flutter: ^10.0.0
   ionicons: ^0.2.2
-  material_symbols_icons: ^4.2789.0
   flutter_colorpicker: ^1.1.0
   dashed_circular_progress_bar: ^0.0.6
-  flutter_iconpicker: ^4.0.1
   page_transition: ^2.2.1
-  dotted_border: ^2.1.0
   intl: ^0.19.0
+  shared_preferences: ^2.3.5
+  flutter_iconpicker: ^4.0.1
   
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
