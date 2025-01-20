@@ -20,7 +20,7 @@ class _AddIncomePage extends State<AddIncomePage> {
   late MyRegularAccountCard chosen_account;
   Icon chosen_account_icon = Icon(
     Ionicons.card,
-    size: 26,
+    size: 33,
     color: Colors.red,
   );
   String chosen_account_name = "---";
@@ -146,7 +146,7 @@ class _AddIncomePage extends State<AddIncomePage> {
                     children: [
                       Text(
                         "From",
-                        style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 16).textStyle,
+                        style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                       ),
                       const SizedBox(
                         height: 5,
@@ -163,7 +163,7 @@ class _AddIncomePage extends State<AddIncomePage> {
                           child: Center(
                             child: Text(
                               chosen_category_name,
-                              style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 16).textStyle,
+                              style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                             ),
                           ),
                         ),
@@ -182,7 +182,7 @@ class _AddIncomePage extends State<AddIncomePage> {
                     children: [
                       Text(
                         "To",
-                        style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 16).textStyle,
+                        style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                       ),
                       const SizedBox(
                         height: 5,
@@ -218,7 +218,7 @@ class _AddIncomePage extends State<AddIncomePage> {
                 decoration: InputDecoration(
                   fillColor: AppColors.darkerGray,
                   hintText: "Short note...",
-                  hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 16).textStyle,
+                  hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 15).textStyle,
                   filled: true,
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -249,7 +249,7 @@ class _AddIncomePage extends State<AddIncomePage> {
                     child: Text(
                       selectedDate,
                       style: selectedDate == 'Pick a date'
-                          ? NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 16).textStyle
+                          ? NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 15).textStyle
                           : BoldBodyTextStyle(color: Colors.black).textStyle,
                     ),
                   ),

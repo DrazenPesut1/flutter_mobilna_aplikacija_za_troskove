@@ -1,6 +1,7 @@
 import 'package:expense_tracker/myComponents/AccountTextField.dart';
 import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
@@ -133,7 +134,7 @@ Widget build(BuildContext context) {
                     alignment: Alignment.center,
                     child: Text(
                       "Account Name",
-                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                      style: BoldBodyTextStyle(color: Colors.black).textStyle,
                     ),
                   ),
                   const SizedBox(height: 5.0),
@@ -144,11 +145,11 @@ Widget build(BuildContext context) {
                     alignment: Alignment.center,
                     child: Text(
                       "Description",
-                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                      style: BoldBodyTextStyle(color: Colors.black).textStyle,
                     ),
                   ),
                   const SizedBox(height: 5.0),
-                  AccountTextField(hint: "What is your account used for...", textEditingController: descriptionController),
+                  AccountTextField(hint: "Short note", textEditingController: descriptionController),
                   const SizedBox(height: 25.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -174,7 +175,7 @@ Widget build(BuildContext context) {
                             ),
                             child: Text(
                               'I am owed',
-                              style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                              style: BoldBodyTextStyle(color: Colors.black).textStyle,
                             ),
                           ),
                         ),
@@ -202,7 +203,7 @@ Widget build(BuildContext context) {
                             ),
                             child: Text(
                               'I owe',
-                              style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                              style: BoldBodyTextStyle(color: Colors.black).textStyle,
                             ),
                           ),
                         ),
@@ -216,10 +217,10 @@ Widget build(BuildContext context) {
                   Row(
                     children: [
                       Expanded(
-                        child: Text("Choose Icon", style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
+                        child: Text("Choose Icon", style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
                       ),
                       Expanded(
-                        child: Text("Icon Color", style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
+                        child: Text("Icon Color", style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
                       ),
                     ],
                   ),
@@ -278,13 +279,13 @@ Widget build(BuildContext context) {
                       Expanded(
                         child: Text(
                           "Initial amount: ",
-                          style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
+                          style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
                         ),
                       ),
                       Expanded(
                         child: Text(
                           "Goal: ",
-                          style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
+                          style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
                         ),
                       ),
                     ],
@@ -296,11 +297,11 @@ Widget build(BuildContext context) {
                         child: TextField(
                           controller: initialPaidOffAmountController,
                           textAlign: TextAlign.center,
-                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 22).textStyle,
                           decoration: InputDecoration(
                             fillColor: AppColors.darkerGray,
-                            hintText: "0",
-                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                            hintText: "0,00",
+                            hintStyle: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                             filled: true,
                             border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -318,11 +319,11 @@ Widget build(BuildContext context) {
                         child: TextField(
                           controller: debtGoalAmountController,
                           textAlign: TextAlign.center,
-                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 22).textStyle,
                           decoration: InputDecoration(
                             fillColor: AppColors.darkerGray,
-                            hintText: "0",
-                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                            hintText: "0,00",
+                            hintStyle: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                             filled: true,
                             border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -333,6 +334,12 @@ Widget build(BuildContext context) {
                               borderSide: BorderSide(width: 1),
                             ),
                           ),
+                          keyboardType:
+                    TextInputType.numberWithOptions(decimal: true, signed: false),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^\d+(\.\d{0,2})?$')),
+                ],
                         ),
                       ),
                     ],

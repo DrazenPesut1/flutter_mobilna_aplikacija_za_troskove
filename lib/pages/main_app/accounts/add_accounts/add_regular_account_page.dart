@@ -1,6 +1,7 @@
 import 'package:expense_tracker/myComponents/AccountTextField.dart';
 import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
@@ -19,7 +20,7 @@ class AddRegularAccountPage extends StatefulWidget {
 class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
   Color selectedColor = Colors.blue;
   Icon selectedIcon = const Icon(
-    FontAwesomeIcons.ccVisa,
+    IconData(0xe05c),
     size: 33.0,
     color: Colors.blue,
   );
@@ -70,7 +71,7 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
     IconPickerIcon? icon = await showIconPicker(
       context,
       configuration: SinglePickerConfiguration(
-        iconPackModes: [IconPack.fontAwesomeIcons],
+        iconPackModes: [IconPack.allMaterial],
         title: Align(
           alignment: Alignment.center,
           child: Text(
@@ -226,11 +227,11 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
                       TextField(
                         controller: initialBalanceController,
                         textAlign: TextAlign.center,
-                        style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                        style: MoneyBodyTextStyle(color: Colors.black, fontSize: 22).textStyle,
                         decoration: InputDecoration(
                           fillColor: AppColors.darkerGray,
                           hintText: "0,00",
-                          hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                          hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                           filled: true,
                           border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -238,7 +239,13 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
                           focusedBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(18)),
                             borderSide: BorderSide(width: 1)),
-                        )
+                        ),
+                        keyboardType:
+                    TextInputType.numberWithOptions(decimal: true, signed: false),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^\d+(\.\d{0,2})?$')),
+                ],
                       ),
                     ],
                   ),

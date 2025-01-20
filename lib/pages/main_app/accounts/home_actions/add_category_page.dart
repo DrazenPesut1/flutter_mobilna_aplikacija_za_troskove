@@ -6,6 +6,7 @@ import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_iconpicker/Models/configuration.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 
 class AddCategoryPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class AddCategoryPage extends StatefulWidget {
 
 class _AddCategoryPage extends State<AddCategoryPage> {
   Color selectedColor = Colors.deepOrange;
-  Icon? selectedIcon = Icon(Ionicons.gift, size: 32, color: Colors.deepOrange,);
+  Icon? selectedIcon = Icon(FontAwesomeIcons.tv, size: 33, color: Colors.deepOrange,);
   final List<String> options = ['Expense', 'Income'];
   String selectedValue = 'Expense';
 
@@ -38,7 +39,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
                     selectedIcon = Icon(
                       selectedIcon!.icon,
                       color: selectedColor,
-                      size: 32.0,
+                      size: 33.0,
                     );
                   }
                 });
@@ -85,7 +86,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
         selectedIcon = Icon(
           icon.data,
           color: selectedColor,
-          size: 32.0,
+          size: 33.0,
         );
       });
       debugPrint('Picked Icon: $icon');
@@ -157,7 +158,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
               ),
             ),
             const SizedBox(height: 15.0),
-            Text("Category name", style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 16).textStyle,),
+            Text("Category name", style: BoldBodyTextStyle(color: Colors.black).textStyle,),
             const SizedBox(height: 5.0,),
             AccountTextField(hint: "Category name", textEditingController: categoryNameController),
             const SizedBox(height: 15.0,),
@@ -213,7 +214,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        child: Icon(Ionicons.color_palette, size: 33, color: selectedColor),
+                        child: Icon(FontAwesomeIcons.droplet, size: 33, color: selectedColor),
                       ),
                     ),
                   ),

@@ -186,7 +186,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
         ),
       );
     },
-  );// Default return value in case dialog is not shown
+  );
 }
 
 

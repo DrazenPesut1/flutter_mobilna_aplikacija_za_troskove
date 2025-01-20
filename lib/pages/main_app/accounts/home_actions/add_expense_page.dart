@@ -31,7 +31,7 @@ class _AddExpensePage extends State<AddExpensePage> {
 
   Icon date_icon = Icon(
     Icons.calendar_month,
-    size: 30,
+    size: 33,
     color: Colors.black,
   );
 
@@ -160,7 +160,7 @@ class _AddExpensePage extends State<AddExpensePage> {
                             child: Text(
                                 chosen_account_name,
                                 style: BoldVariableFontTextStyle(
-                                        color: Colors.black, fontSize: 16)
+                                        color: Colors.black, fontSize: 15)
                                     .textStyle),
                           ),
                         ),
@@ -193,7 +193,7 @@ class _AddExpensePage extends State<AddExpensePage> {
                             child: Text(
                               chosen_category_name,
                               style: BoldVariableFontTextStyle(
-                                      color: Colors.black, fontSize: 16)
+                                      color: Colors.black, fontSize: 15)
                                   .textStyle,
                             ),
                           ),
@@ -214,7 +214,7 @@ class _AddExpensePage extends State<AddExpensePage> {
                     fillColor: AppColors.darkerGray,
                     hintText: "Short note...",
                     hintStyle: NormalVariableFontTextStyle(
-                            color: AppColors.textGray, fontSize: 16)
+                            color: AppColors.textGray, fontSize: 15)
                         .textStyle,
                     filled: true,
                     border: const OutlineInputBorder(
@@ -243,7 +243,7 @@ class _AddExpensePage extends State<AddExpensePage> {
                     selectedDate,
                     style: selectedDate == 'Pick a date'
                         ? NormalVariableFontTextStyle(
-                                color: AppColors.textGray, fontSize: 16)
+                                color: AppColors.textGray, fontSize: 15)
                             .textStyle
                         : BoldBodyTextStyle(color: Colors.black).textStyle,
                   )),

@@ -174,7 +174,7 @@ void didChangeDependencies() {
               children: [
                 Column(
                   children: [
-                    Text("From", style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 16).textStyle,),
+                    Text("From", style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,),
                     const SizedBox(
                       height: 5,
                     ),
@@ -201,7 +201,7 @@ void didChangeDependencies() {
                 ),
                 Column(
                   children: [
-                    Text("To", style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 16).textStyle),
+                    Text("To", style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle),
                     GestureDetector(
                         onTap: () {
                             if (chosen_account_from == null) {
@@ -250,7 +250,7 @@ void didChangeDependencies() {
               decoration: InputDecoration(
                 fillColor: AppColors.darkerGray,
                 hintText: "Short note...",
-                hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 16).textStyle,
+                hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 15).textStyle,
                 filled: true,
                 border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -276,7 +276,7 @@ void didChangeDependencies() {
                 height: 50,
                 width: double.infinity,
                 child: Center(child: Text(selectedDate, style: 
-                selectedDate == 'Pick a date' ? NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 16).textStyle 
+                selectedDate == 'Pick a date' ? NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 15).textStyle 
                 : BoldBodyTextStyle(color: Colors.black).textStyle,
                 )),
               ),

@@ -1,8 +1,10 @@
 import 'package:expense_tracker/myComponents/AccountTextField.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_iconpicker/Models/configuration.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
@@ -17,7 +19,7 @@ class AddSavingsAccountPage extends StatefulWidget{
 
 class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
   Color selectedColor = Colors.blue;
-  Icon? selectedIcon = const Icon(Icons.laptop_mac_rounded, size: 33.0, color: Colors.blue,);
+  Icon? selectedIcon = const Icon(FontAwesomeIcons.car, size: 33.0, color: Colors.blue,);
   double initial_amount = 0;
   double goal = 0;
   double progress = 0;
@@ -131,7 +133,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                     alignment: Alignment.center,
                     child: Text(
                       "Account Name",
-                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                      style: BoldBodyTextStyle(color: Colors.black).textStyle,
                     ),
                   ),
                   const SizedBox(height: 5.0),
@@ -141,7 +143,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                     alignment: Alignment.center,
                     child: Text(
                       "Description",
-                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                      style: BoldBodyTextStyle(color: Colors.black).textStyle,
                     ),
                   ),
                   const SizedBox(height: 5.0),
@@ -150,10 +152,10 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                   Row(
                     children: [
                       Expanded(
-                        child: Text("Choose Icon", style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
+                        child: Text("Choose Icon", style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
                       ),
                       Expanded(
-                        child: Text("Icon Color", style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
+                        child: Text("Icon Color", style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center),
                       ),
                     ],
                   ),
@@ -199,7 +201,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                              child: Icon(Ionicons.color_palette, size: 33, color: selectedColor),
+                              child: Icon(FontAwesomeIcons.droplet, size: 33, color: selectedColor),
                             ),
                           ),
                         ),
@@ -212,13 +214,13 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                       Expanded(
                         child: Text(
                           "Initial amount: ",
-                          style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
+                          style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
                         ),
                       ),
                       Expanded(
                         child: Text(
                           "Goal: ",
-                          style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
+                          style: BoldBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,
                         ),
                       ),
                     ],
@@ -230,11 +232,11 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                         child: TextField(
                           controller: initialSavedAmountController,
                           textAlign: TextAlign.center,
-                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 22).textStyle,
                           decoration: InputDecoration(
                             fillColor: AppColors.darkerGray,
-                            hintText: "0",
-                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                            hintText: "0,00",
+                            hintStyle: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                             filled: true,
                             border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -245,6 +247,12 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                               borderSide: BorderSide(width: 1),
                             ),
                           ),
+                          keyboardType:
+                    TextInputType.numberWithOptions(decimal: true, signed: false),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^\d+(\.\d{0,2})?$')),
+                ],
                         ),
                       ),
                       const SizedBox(width: 10),
@@ -252,11 +260,11 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                         child: TextField(
                           controller: savingsGoalAmountController,
                           textAlign: TextAlign.center,
-                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                          style: MoneyBodyTextStyle(color: Colors.black, fontSize: 22).textStyle,
                           decoration: InputDecoration(
                             fillColor: AppColors.darkerGray,
-                            hintText: "0",
-                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                            hintText: "0,00",
+                            hintStyle: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                             filled: true,
                             border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -267,6 +275,12 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                               borderSide: BorderSide(width: 1),
                             ),
                           ),
+                          keyboardType:
+                    TextInputType.numberWithOptions(decimal: true, signed: false),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                      RegExp(r'^\d+(\.\d{0,2})?$')),
+                ],
                         ),
                       ),
                     ],
