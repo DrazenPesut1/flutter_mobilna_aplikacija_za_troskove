@@ -32,20 +32,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: const WelcomePage(),
       onGenerateRoute: (settings){
         switch(settings.name){
           case '/navigation_page':
             return PageTransition(
               type: PageTransitionType.rightToLeft,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 200),
               settings: settings,
               child: const NavigationPage(),
             );
             case '/home_page':
             return PageTransition(
               type: PageTransitionType.rightToLeftJoined,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 200),
               settings: settings,
               child: const HomePage(),
               childCurrent: WelcomePage()
@@ -53,14 +54,14 @@ class MyApp extends StatelessWidget {
             case '/add_expense_page':
             return PageTransition(
               type: PageTransitionType.bottomToTop,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 200),
               settings: settings,
               child: const AddExpensePage(),
             );
             case '/add_income_page':
             return PageTransition(
               type: PageTransitionType.bottomToTop,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 200),
               settings: settings,
               child: const AddIncomePage(),
               childCurrent: HomePage()
@@ -68,21 +69,21 @@ class MyApp extends StatelessWidget {
             case '/add_category_page':
             return PageTransition(
               type: PageTransitionType.bottomToTop,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 200),
               settings: settings,
               child: const AddCategoryPage(),
             );
             case '/make_transfer_page':
             return PageTransition(
               type: PageTransitionType.bottomToTop,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 200),
               settings: settings,
               child: MakeTransferPage(),
             );
             case '/accounts_page':
             return PageTransition(
               type: PageTransitionType.fade,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 200),
               settings: settings,
               child: const AccountsPage()
             );

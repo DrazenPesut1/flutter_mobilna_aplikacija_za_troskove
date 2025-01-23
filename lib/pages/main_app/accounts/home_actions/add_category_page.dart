@@ -66,7 +66,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
     IconPickerIcon? icon = await showIconPicker(
       context,
       configuration: SinglePickerConfiguration(
-        iconPackModes: [IconPack.allMaterial, IconPack.fontAwesomeIcons],
+        iconPackModes:  [IconPack.fontAwesomeIcons],
         title: Align(
           alignment: Alignment.center,
           child: Text(

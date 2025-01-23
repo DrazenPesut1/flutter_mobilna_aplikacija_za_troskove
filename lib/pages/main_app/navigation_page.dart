@@ -79,7 +79,7 @@ class _NavigationPageState extends State<NavigationPage> {
                 label: "Accounts"),
           ],
           selectedIndex: currentIndex,
-          animationDuration: const Duration(milliseconds: 300), // Add custom animation duration
+          animationDuration: const Duration(milliseconds: 200), // Add custom animation duration
           onDestinationSelected: (int index) {
             setState(() {
               currentIndex = index;

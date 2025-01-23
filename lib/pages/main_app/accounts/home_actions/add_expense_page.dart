@@ -156,7 +156,7 @@ class _AddExpensePage extends State<AddExpensePage> {
                           decoration: BoxDecoration(
                               color: AppColors.darkerGray,
                               borderRadius: BorderRadius.circular(18)),
-                          child: Center(
+                          child:  Center(
                             child: Text(
                                 chosen_account_name,
                                 style: BoldVariableFontTextStyle(
