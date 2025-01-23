@@ -47,6 +47,6 @@ Android emulatori pruženi od strane Android Studia se koriste za razvoj i testi
 - **6.11.2024.** - napravljene naslovna stranica, stranice za registraciju i prijavu, trenutno bez funkcionalnosti
 - **20.11.2024.** - napravljen izgled računa, trenutno radim na funkcionalnosti dodavanja računa
 - **22.11.2024.** - dodan prozor za dodavanje običnih računa, namjeravam isto napraviti za račune za štednju i dugove
-- **12.12.2024.** - mogućnost dodavanja svih tipova računa i djelomično uređivanje računa
+- **12.12.2024.** - dodana mogućnost uređivanja uređivanje računa 
 - **20.12.2024** - popravljen i nadodan kod za račune, radim na kategorijama za glavnu stranicu
 - **14.1.2024** - dodane kategorije za troškove i dodavanje vlastitih kategorija
