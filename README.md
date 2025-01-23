@@ -20,9 +20,7 @@ Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok
 **Glavna Stranica**
 - stranica koju korisnik vidi prilikom prijave/pokretanja aplikacije
 - sadrži kategorije za troškove i primanja te mogućnost dodavanja vlastitih kategorija
-- korisnik na ovoj stranici dodaje troškove ili primanja iz/u jednog od stvorenih računa na stranici za račune
-- troškovi su prikazani po kategorijama te se ukupan prikaz troškova za tekući mjesec može vidjeti kao pie-chart, a za ostala vremenska razdoblja na stranici za statistiku
-- ...
+- korisnik na ovoj stranici dodaje troškove ili primanja iz/u jednog od stvorenih računa na stranici za račune te ima uvid u ukupno stanje troškova i primanja
 
 
 **Stranica za račune**
