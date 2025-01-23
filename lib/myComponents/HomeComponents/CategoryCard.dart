@@ -45,7 +45,7 @@ class _ExpenseCategoryCardState extends State<ExpenseCategoryCard> {
         child: Align(
           alignment: Alignment.center,
           child: ListTile(
-            leading: Icon(widget.category_icon, size: 33, color: widget.category_color,),
+            leading: Icon(widget.category_icon, size: 28, color: widget.category_color,),
             title: Text(widget.category_name, style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 16).textStyle,),
             trailing: Text('${widget.category_expense.toStringAsFixed(2)} EUR', style: MoneyBodyTextStyle(color: Colors.black, fontSize: 18).textStyle,),
           ),
@@ -84,7 +84,7 @@ class _IncomeCategoryCardState extends State<IncomeCategoryCard> {
         child: Align(
           alignment: Alignment.center,
           child: ListTile(
-            leading: Icon(widget.category_icon, size: 33, color: widget.category_color,),
+            leading: Icon(widget.category_icon, size: 28, color: widget.category_color,),
             title: Text(widget.category_name, style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 16).textStyle,),
             trailing: Text('${widget.category_income.toStringAsFixed(2)} EUR', style: MoneyBodyTextStyle(color: Colors.black, fontSize: 18).textStyle,),
           ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
@@ -248,11 +247,7 @@ Widget build(BuildContext context) {
                             builder: (_, double value, __) => Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(
-                                  FontAwesomeIcons.computer,
-                                  size: 30,
-                                  color: widget.card_color,
-                                ),
+                                widget.card_icon,
                                 const SizedBox(
                                   height: 4,
                                 ),
@@ -440,11 +435,7 @@ class _MyDebtsAccountCardState extends State<MyDebtsAccountCard> {
                             builder: (_, double value, __) => Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(
-                                  FontAwesomeIcons.computer,
-                                  size: 30,
-                                  color: widget.card_color,
-                                ),
+                                widget.card_icon,
                                 const SizedBox(
                                   height: 4,
                                 ),
