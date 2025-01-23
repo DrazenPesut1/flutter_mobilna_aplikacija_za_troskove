@@ -183,6 +183,7 @@ Widget build(BuildContext context) {
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -193,6 +194,7 @@ Widget build(BuildContext context) {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Text(formatter.format(widget.goal), style: MoneyBodyTextStyle(color: Colors.black, fontSize: 18).textStyle,),
                               Text.rich(
                                 TextSpan(
                                   text: "Saved:  ",
@@ -374,6 +376,7 @@ class _MyDebtsAccountCardState extends State<MyDebtsAccountCard> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              Text(formatter.format(widget.goal), style: MoneyBodyTextStyle(color: Colors.black, fontSize: 18).textStyle,),
                               Text.rich(
                                 TextSpan(
                                   text: "Returned:  ",
