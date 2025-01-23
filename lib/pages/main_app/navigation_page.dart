@@ -15,6 +15,8 @@ class NavigationPage extends StatefulWidget {
 
 class _NavigationPageState extends State<NavigationPage> {
   int currentIndex = 0;
+  final PageController _pageController = PageController();
+
   final screens = [
     const HomePage(),
     const TransactionsPage(),
@@ -25,34 +27,42 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[currentIndex],
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        physics: const NeverScrollableScrollPhysics(),
+        children: screens, // Disable swipe gestures
+      ),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-            height: 70.0,
-            shadowColor: Colors.black,
-            backgroundColor: AppColors.offWhite,
-            indicatorColor: AppColors.offWhite,
-            elevation: 20,
-            iconTheme: WidgetStateProperty.resolveWith<IconThemeData>(
-                (Set<WidgetState> states) {
-              final isSelected = states.contains(WidgetState.selected);
-              return IconThemeData(
-                color: isSelected ? AppColors.primary : Colors.black,
-              );
-            }),
-            labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>(
-                (Set<WidgetState> states) {
-              final isSelected = states.contains(WidgetState.selected);
-              return TextStyle(
-                color: isSelected ? AppColors.primary : AppColors.textGray,
-                fontSize: 13, fontFamily: 'Poppins'
-              );
-            })
-          ),
+          height: 70.0,
+          shadowColor: Colors.black,
+          backgroundColor: AppColors.offWhite,
+          indicatorColor: AppColors.offWhite,
+          elevation: 20,
+          iconTheme: WidgetStateProperty.resolveWith<IconThemeData>((Set<WidgetState> states) {
+            final isSelected = states.contains(WidgetState.selected);
+            return IconThemeData(
+              color: isSelected ? AppColors.primary : Colors.black,
+            );
+          }),
+          labelTextStyle: WidgetStateProperty.resolveWith<TextStyle>((Set<WidgetState> states) {
+            final isSelected = states.contains(WidgetState.selected);
+            return TextStyle(
+              color: isSelected ? AppColors.primary : AppColors.textGray,
+              fontSize: 13,
+              fontFamily: 'Poppins',
+            );
+          }),
+        ),
         child: NavigationBar(
           destinations: const [
             NavigationDestination(
-                icon: Icon(FontAwesomeIcons.house, color: AppColors.textGray,),
+                icon: Icon(FontAwesomeIcons.house, color: AppColors.textGray),
                 selectedIcon: Icon(FontAwesomeIcons.house),
                 label: "Home"),
             NavigationDestination(
@@ -69,14 +79,20 @@ class _NavigationPageState extends State<NavigationPage> {
                 label: "Accounts"),
           ],
           selectedIndex: currentIndex,
-          animationDuration: const Duration(milliseconds: 100),
+          animationDuration: const Duration(milliseconds: 300), // Add custom animation duration
           onDestinationSelected: (int index) {
             setState(() {
               currentIndex = index;
             });
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 200), // Duration of the animation
+              curve: Curves.easeIn, // Curve for smooth transition
+            );
           },
         ),
       ),
     );
   }
 }
+

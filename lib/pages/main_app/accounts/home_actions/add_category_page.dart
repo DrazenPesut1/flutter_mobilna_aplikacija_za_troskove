@@ -17,8 +17,8 @@ class AddCategoryPage extends StatefulWidget {
 }
 
 class _AddCategoryPage extends State<AddCategoryPage> {
-  Color selectedColor = Colors.deepOrange;
-  Icon? selectedIcon = Icon(FontAwesomeIcons.tv, size: 33, color: Colors.deepOrange,);
+  Color selectedColor = Colors.blue;
+  Icon? selectedIcon = Icon(FontAwesomeIcons.book, size: 35, color: Colors.blue,);
   final List<String> options = ['Expense', 'Income'];
   String selectedValue = 'Expense';
 
@@ -39,7 +39,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
                     selectedIcon = Icon(
                       selectedIcon!.icon,
                       color: selectedColor,
-                      size: 33.0,
+                      size: 28.0,
                     );
                   }
                 });
@@ -117,7 +117,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           children: [
             Column(
@@ -228,6 +228,7 @@ class _AddCategoryPage extends State<AddCategoryPage> {
                   final categoryData = ({
                     'categoryName' : categoryNameController.text,
                     'categoryIcon': selectedIcon!.icon?.codePoint ?? Ionicons.gift.codePoint,
+                    'categoryIconFamily' : selectedIcon!.icon?.fontFamily,
                     // ignore: deprecated_member_use
                     'categoryColor' : selectedColor.value,
                     'categoryType' : selectedValue,

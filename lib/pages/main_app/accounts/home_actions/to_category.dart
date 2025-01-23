@@ -24,7 +24,7 @@ class _ToCategoryState extends State<ToCategory> {
       return ExpenseCategoryCard(
         category_name: categoryData['categoryName'],
         category_icon: IconData(
-          categoryData['categoryIcon'], 
+          categoryData['categoryIcon'], fontFamily: categoryData['categoryIconFamily'], fontPackage: 'font_awesome_flutter'
         ),
         category_color: Color(categoryData['categoryColor']),
         category_expense: categoryData['categoryExpense'] ?? 0.0,

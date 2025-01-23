@@ -7,6 +7,7 @@ import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter_iconpicker/Models/configuration.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 
 class AddDebtsAccountPage extends StatefulWidget{
@@ -18,7 +19,7 @@ class AddDebtsAccountPage extends StatefulWidget{
 
 class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
   Color selectedColor = Colors.blue;
-  Icon? selectedIcon = const Icon(Icons.car_repair_rounded, size: 45.0, color: Colors.blue,);
+  Icon? selectedIcon = const Icon(FontAwesomeIcons.ticket, size: 35.0, color: Colors.blue,);
   double initial_amount = 0;
   double goal = 0;
   double progress = 0;
@@ -46,7 +47,7 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
                   selectedIcon = Icon(
                     selectedIcon!.icon, 
                     color: selectedColor,
-                    size: 45.0,
+                    size: 35.0,
                   );
                 }
               });
@@ -74,7 +75,8 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
     IconPickerIcon? icon = await showIconPicker(
       context,
       configuration: SinglePickerConfiguration(
-        iconPackModes: [IconPack.roundedMaterial],
+        iconPackModes: [IconPack.fontAwesomeIcons],
+        iconPickerShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         title: Align(
           alignment: Alignment.center,
           child: Text(
@@ -84,14 +86,14 @@ class _AddDebtsAccountPageState extends State<AddDebtsAccountPage>{
         ),
         closeChild: Text(
           'Select',
-          style: NormalBodyTextStyle(color: AppColors.primary).textStyle,
+          style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 18).textStyle,
         ),
       ),
     );
 
     if (icon != null) {
       setState(() {
-        selectedIcon = Icon(icon.data, color: selectedColor, size: 45.0,);
+        selectedIcon = Icon(icon.data, color: selectedColor, size: 35.0,);
       });
       debugPrint('Picked Icon: $icon');
     }
@@ -266,7 +268,7 @@ Widget build(BuildContext context) {
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                              child: Icon(Ionicons.color_palette, size: 33, color: selectedColor),
+                              child: Icon(FontAwesomeIcons.droplet, size: 33, color: selectedColor),
                             ),
                           ),
                         ),
@@ -301,7 +303,7 @@ Widget build(BuildContext context) {
                           decoration: InputDecoration(
                             fillColor: AppColors.darkerGray,
                             hintText: "0,00",
-                            hintStyle: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
+                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                             filled: true,
                             border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -323,7 +325,7 @@ Widget build(BuildContext context) {
                           decoration: InputDecoration(
                             fillColor: AppColors.darkerGray,
                             hintText: "0,00",
-                            hintStyle: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
+                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                             filled: true,
                             border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -353,6 +355,7 @@ Widget build(BuildContext context) {
                         'initialPaidOffAmount': double.tryParse(initialPaidOffAmountController.text) ?? 0.0,
                         'debtGoalAmount': double.tryParse(debtGoalAmountController.text) ?? 0.0,
                         'selectedIcon': selectedIcon!.icon?.codePoint,
+                        'selectedIconFamily' : selectedIcon!.icon?.fontFamily,
                         // ignore: deprecated_member_use
                         'selectedColor': selectedColor.value,
                         'selectedType' : selectedType ?? 'I owe'

@@ -166,7 +166,7 @@ void didChangeDependencies() {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -189,7 +189,7 @@ void didChangeDependencies() {
                         ),
                         child: Center(
                           child: 
-                            Text(chosen_account_name_from)
+                            Text(chosen_account_name_from, style: BoldBodyTextStyle(color: Colors.black).textStyle,)
                         ),
                       ),
                     )
@@ -233,7 +233,7 @@ void didChangeDependencies() {
                         borderRadius: BorderRadius.circular(18)
                         ),
                         child: Center(
-                          child: Text(chosen_account_name_to),
+                          child: Text(chosen_account_name_to, style: BoldBodyTextStyle(color: Colors.black).textStyle,),
                         ),
                       ),
                     )
@@ -277,7 +277,7 @@ void didChangeDependencies() {
                 width: double.infinity,
                 child: Center(child: Text(selectedDate, style: 
                 selectedDate == 'Pick a date' ? NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 15).textStyle 
-                : BoldBodyTextStyle(color: Colors.black).textStyle,
+                : BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                 )),
               ),
             ),
@@ -357,7 +357,8 @@ void didChangeDependencies() {
                     'description' : chosen_account_from?.card_description ?? 'some description' ,
                     'initialBalance' : chosen_account_from!.card_balance,
                     'selectedColor' : chosen_account_from!.card_color.value,
-                    'selectedIcon' : chosen_account_from!.card_icon.icon?.codePoint
+                    'selectedIcon' : chosen_account_from!.card_icon.icon?.codePoint,
+                    'selectedIconFamily' : chosen_account_from!.card_icon.icon?.fontFamily
                   });
 
                   RegularAccountStorage.updateBalance({
@@ -365,7 +366,8 @@ void didChangeDependencies() {
                     'description' : chosen_account_to?.card_description ?? 'some other description',
                     'initialBalance' : chosen_account_to!.card_balance,
                     'selectedColor' : chosen_account_to!.card_color.value,
-                    'selectedIcon' : chosen_account_to!.card_icon.icon?.codePoint
+                    'selectedIcon' : chosen_account_to!.card_icon.icon?.codePoint,
+                    'selectedIconFamily' : chosen_account_to!.card_icon.icon?.fontFamily
                   });
 
                   Navigator.pop(context);

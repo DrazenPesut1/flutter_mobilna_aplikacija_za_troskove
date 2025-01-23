@@ -3,10 +3,12 @@
 import 'package:expense_tracker/myComponents/AccountCard.dart';
 import 'package:expense_tracker/myComponents/AccountTextField.dart';
 import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
+import 'package:expense_tracker/pages/main_app/storage/account_storage/regular_account_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_iconpicker/Models/configuration.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
@@ -19,11 +21,11 @@ class EditRegularAccountPage extends StatefulWidget {
 }
 
 class _EditRegularAccountPageState extends State<EditRegularAccountPage> {
-  
+  double total_balance = 0;
   Color selectedColor = Colors.blue;
   Icon? selectedIcon = const Icon(
     Icons.credit_card_rounded,
-    size: 33.0,
+    size: 35.0,
     color: Colors.blue,
   );
 
@@ -34,6 +36,7 @@ class _EditRegularAccountPageState extends State<EditRegularAccountPage> {
    @override
   void initState() {
     super.initState();
+    _loadTotalBalance();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final MyRegularAccountCard? account = 
@@ -43,6 +46,8 @@ class _EditRegularAccountPageState extends State<EditRegularAccountPage> {
         accountNameController.text = account.card_title;
         descriptionController.text = account.card_description;
         initialBalanceController.text = account.card_balance.toString();
+
+        total_balance -= double.tryParse(initialBalanceController.text) ?? 0.0;
         
         setState(() {
           selectedColor = account.card_color;
@@ -54,6 +59,11 @@ class _EditRegularAccountPageState extends State<EditRegularAccountPage> {
         });
       }
     });
+  }
+
+  Future<void> _loadTotalBalance() async {
+    total_balance = await RegularAccountStorage.loadTotalBalance();
+    setState(() {});
   }
 
   void openColorPicker() {
@@ -100,7 +110,7 @@ class _EditRegularAccountPageState extends State<EditRegularAccountPage> {
     IconPickerIcon? icon = await showIconPicker(
       context,
       configuration: SinglePickerConfiguration(
-        iconPackModes: [IconPack.allMaterial, IconPack.fontAwesomeIcons],
+        iconPackModes: [IconPack.fontAwesomeIcons],
         title: Align(
           alignment: Alignment.center,
           child: Text(
@@ -147,147 +157,161 @@ class _EditRegularAccountPageState extends State<EditRegularAccountPage> {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        margin: const EdgeInsets.only(top: 10.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
-          color: AppColors.offWhite,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Account Name",
-                  style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                ),
-              ),
-              const SizedBox(height: 5.0),
-              AccountTextField(hint: "Account Name", textEditingController: accountNameController),
-              const SizedBox(height: 15.0),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Description",
-                  style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                ),
-              ),
-              const SizedBox(height: 5.0),
-              AccountTextField(hint: "Short note...", textEditingController: descriptionController),
-              const SizedBox(height: 15.0),
-              Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0),
-                  child: Column(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [Container(
+            margin: const EdgeInsets.only(top: 10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+              color: AppColors.offWhite,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Account Name",
+                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                    ),
+                  ),
+                  const SizedBox(height: 5.0),
+                  AccountTextField(hint: "Account Name", textEditingController: accountNameController),
+                  const SizedBox(height: 15.0),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Description",
+                      style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                    ),
+                  ),
+                  const SizedBox(height: 5.0),
+                  AccountTextField(hint: "Short note...", textEditingController: descriptionController),
+                  const SizedBox(height: 15.0),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: Column(
+                        children: [
+                          Row(children: [
+                            Expanded(child: Text("Pick Icon", style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,)),
+                            Expanded(child: Text("Pick Color",style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,),)
+                          ],),
+                          const SizedBox(height: 5.0),
+                          Row(children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: openIconPicker,
+                                child: Container(
+                                  height: 60,
+                                  decoration: const BoxDecoration(
+                                    color: AppColors.darkerGray,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(18),
+                                      bottomLeft: Radius.circular(18)
+                                    ),
+                                    border: Border(
+                                      right: BorderSide(
+                                        color: AppColors.textGray,
+                                        width: 1
+                                      ),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                                    child: selectedIcon,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: openColorPicker,
+                                child: Container(
+                                  height: 60,
+                                  decoration: const BoxDecoration(
+                                    color: AppColors.darkerGray,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(18),
+                                      bottomRight: Radius.circular(18)
+                                    ),
+                                    border: Border(
+                                      left: BorderSide(
+                                        color: AppColors.textGray,
+                                        width: 1.2
+                                      ),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                                    child: Icon(FontAwesomeIcons.droplet, size: 33, color: selectedColor,),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],),
+                        ],
+                      ),
+                    ),
+                  const SizedBox(height: 25.0),
+                  Column(
                     children: [
-                      Row(children: [
-                        Expanded(child: Text("Pick Icon", style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,)),
-                        Expanded(child: Text("Pick Color",style: NormalBodyTextStyle(color: Colors.black).textStyle, textAlign: TextAlign.center,),)
-                      ],),
-                      const SizedBox(height: 5.0),
-                      Row(children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: openIconPicker,
-                            child: Container(
-                              height: 60,
-                              decoration: const BoxDecoration(
-                                color: AppColors.darkerGray,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(18),
-                                  bottomLeft: Radius.circular(18)
-                                ),
-                                border: Border(
-                                  right: BorderSide(
-                                    color: AppColors.textGray,
-                                    width: 1
-                                  ),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                                child: selectedIcon,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: openColorPicker,
-                            child: Container(
-                              height: 60,
-                              decoration: const BoxDecoration(
-                                color: AppColors.darkerGray,
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(18),
-                                  bottomRight: Radius.circular(18)
-                                ),
-                                border: Border(
-                                  left: BorderSide(
-                                    color: AppColors.textGray,
-                                    width: 1.2
-                                  ),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                                child: Icon(Ionicons.color_palette, size: 33, color: selectedColor,),
-                              ),
-                            ),
-                          ),
+                      Text(
+                        "Initial Balance (EUR): ",
+                        style: NormalBodyTextStyle(color: Colors.black).textStyle,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      TextField(
+                        controller: initialBalanceController,
+                        textAlign: TextAlign.center,
+                        style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
+                        decoration: InputDecoration(
+                          fillColor: AppColors.darkerGray,
+                          hintText: "0,00",
+                          hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
+                          filled: true,
+                          border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(18)),
+                            borderSide: BorderSide.none),
+                          focusedBorder: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(18)),
+                            borderSide: BorderSide(width: 1)),
                         )
-                      ],),
+                      ),
                     ],
                   ),
-                ),
-              const SizedBox(height: 25.0),
-              Column(
-                children: [
-                  Text(
-                    "Initial Balance (EUR): ",
-                    style: NormalBodyTextStyle(color: Colors.black).textStyle,
-                  ),
                   const SizedBox(
-                    height: 5,
+                    height: 30.0,
                   ),
-                  TextField(
-                    controller: initialBalanceController,
-                    textAlign: TextAlign.center,
-                    style: MoneyBodyTextStyle(color: Colors.black, fontSize: 20).textStyle,
-                    decoration: InputDecoration(
-                      fillColor: AppColors.darkerGray,
-                      hintText: "0,00",
-                      hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 20).textStyle,
-                      filled: true,
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(18)),
-                        borderSide: BorderSide.none),
-                      focusedBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(18)),
-                        borderSide: BorderSide(width: 1)),
-                    )
-                  ),
+                  RoundedActionButton(
+                      function: () async {
+
+                        total_balance += double.tryParse(initialBalanceController.text) ?? 0.0;
+                        await RegularAccountStorage.saveTotalBalance(total_balance);                        
+
+                        final accountData = {
+                          'accountName': accountNameController.text,
+                          'description': descriptionController.text,
+                          'initialBalance': double.tryParse(initialBalanceController.text) ?? 0.0,
+                          'selectedIcon': selectedIcon!.icon?.codePoint,
+                          'selectedIconFamily' : selectedIcon!.icon?.fontFamily,
+                          'selectedColor': selectedColor.value,
+                        };
+
+                        Navigator.pop(context, accountData);
+              }, label: 'Save',),
                 ],
+                
               ),
-              const SizedBox(
-                height: 30.0,
-              ),
-              RoundedActionButton(
-                  function: () {
-                    final accountData = {
-                      'accountName': accountNameController.text,
-                      'description': descriptionController.text,
-                      'initialBalance': double.tryParse(initialBalanceController.text) ?? 0.0,
-                      'selectedIcon': selectedIcon!.icon?.codePoint,
-                      'selectedColor': selectedColor.value,
-                    };
-        
-                    Navigator.pop(context, accountData);
-          }, label: 'Save',),
-            ],
+            ),
           ),
-        ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.4,
+            color: AppColors.offWhite,
+          )
+        ]),
       ),
     );
   }

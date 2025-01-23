@@ -26,7 +26,7 @@ class _ToAccountState extends State<ToAccount> {
           card_description: accountData['description'],
           card_balance: accountData['initialBalance'],
           card_icon: Icon(
-            IconData(accountData['selectedIcon']),
+            IconData(accountData['selectedIcon'], fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'),
             color: Color(accountData['selectedColor']),
             size: 45.0,
           ),

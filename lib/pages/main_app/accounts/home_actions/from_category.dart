@@ -24,7 +24,7 @@ class _FromCategoryState extends State<FromCategory> {
       return IncomeCategoryCard(
         category_name: categoryData['categoryName'],
         category_icon: IconData(
-          categoryData['categoryIcon'], 
+          categoryData['categoryIcon'], fontFamily: categoryData['categoryIconFamily'], fontPackage: 'font_awesome_flutter'
         ),
         category_color: Color(categoryData['categoryColor']),
         category_income: categoryData['categoryIncome'] ?? 0.0,

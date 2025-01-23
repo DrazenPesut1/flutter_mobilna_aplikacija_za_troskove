@@ -38,9 +38,9 @@ class _DebtsAccountPageState extends State<DebtsAccountPage> {
           card_balance: accountData['initialPaidOffAmount'],
           goal: accountData['debtGoalAmount'],
           card_icon: Icon(
-            IconData(accountData['selectedIcon']),
+            IconData(accountData['selectedIcon'], fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'),
             color: Color(accountData['selectedColor']),
-            size: 33.0,
+            size: 35.0,
           ),
           card_color: Color(accountData['selectedColor']),
           progress: (1.0 * accountData['initialPaidOffAmount']) / accountData['debtGoalAmount'],
@@ -59,17 +59,17 @@ class _DebtsAccountPageState extends State<DebtsAccountPage> {
         debtsAccountsList.add(
           MyDebtsAccountCard(
             card_title: accountData['accountName'],
-            card_description: accountData['description'],
-            card_balance: accountData['initialPaidOffAmount'],
-            goal: accountData['debtGoalAmount'],
-            card_icon: Icon(
-              IconData(accountData['selectedIcon']),
-              color: Color(accountData['selectedColor']),
-              size: 45.0,
-            ),
-            card_color: Color(accountData['selectedColor']),
-            progress: (1.0 * accountData['initialPaidOffAmount']) / accountData['debtGoalAmount'],
-            type: accountData['selectedType'],
+          card_description: accountData['description'],
+          card_balance: accountData['initialPaidOffAmount'],
+          goal: accountData['debtGoalAmount'],
+          card_icon: Icon(
+            IconData(accountData['selectedIcon'], fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'),
+            color: Color(accountData['selectedColor']),
+            size: 35.0,
+          ),
+          card_color: Color(accountData['selectedColor']),
+          progress: (1.0 * accountData['initialPaidOffAmount']) / accountData['debtGoalAmount'],
+          type: accountData['selectedType'],
           ),
         );
       });
@@ -115,6 +115,7 @@ class _DebtsAccountPageState extends State<DebtsAccountPage> {
                       'initialPaidOffAmount': newBalance,
                       'debtGoalAmount': account.goal,
                       'selectedIcon': account.card_icon.icon?.codePoint,
+                      'selectedIconFamily': account.card_icon.icon?.fontFamily,
                       // ignore: deprecated_member_use
                       'selectedColor': account.card_color.value,
                       'selectedType' : account.type
@@ -175,6 +176,7 @@ class _DebtsAccountPageState extends State<DebtsAccountPage> {
                       'initialPaidOffAmount': newBalance,
                       'debtGoalAmount': account.goal,
                       'selectedIcon': account.card_icon.icon?.codePoint,
+                      'selectedIconFamily': account.card_icon.icon?.fontFamily,
                       // ignore: deprecated_member_use
                       'selectedColor': account.card_color.value,
                       'selectedType' : account.type

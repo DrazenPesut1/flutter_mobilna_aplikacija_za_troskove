@@ -65,11 +65,11 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: AppColors.offWhite,
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: Text(
-          'January 2025',
+        /*title: Text(
+          '< January 2025 >',
           style: BoldHeaderTextStyle(color: Colors.black).textStyle,
         ),
-        centerTitle: true,
+        centerTitle: true,*/
         actions: [
           IconButton(
               onPressed: () {},
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
             child: Column(
               children: [
                 Align(
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                   child: Text(
                     formatter.format(total_balance),
                     style:
-                        MoneyBodyTextStyle(color: Colors.black, fontSize: 28.0)
+                        MoneyBodyTextStyle(color: Colors.black, fontSize: 30.0)
                             .textStyle,
                   ),
                 ),

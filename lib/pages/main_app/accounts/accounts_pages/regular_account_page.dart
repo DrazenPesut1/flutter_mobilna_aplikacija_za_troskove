@@ -43,16 +43,17 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
     List<Map<String, dynamic>> loadedAccountsData = await RegularAccountStorage.loadAccounts();
     setState(() {
       regularAccountsList = loadedAccountsData.map((accountData) {
+
         return MyRegularAccountCard(
           card_title: accountData['accountName'],
-          card_description: accountData['description'],
-          card_balance: accountData['initialBalance'],
-          card_icon: Icon(
-            IconData(accountData['selectedIcon']),
-            color: Color(accountData['selectedColor']),
-            size: 45.0,
-          ),
-          card_color: Color(accountData['selectedColor']),
+            card_description: accountData['description'],
+            card_balance: accountData['initialBalance'],
+            card_icon: Icon(
+              IconData(accountData['selectedIcon'], fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'), 
+              size: 35, 
+              color: Color(accountData['selectedColor']),
+            ),
+            card_color: Color(accountData['selectedColor']),
         );
       }).toList();
     });
@@ -74,8 +75,6 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
 
       RegularAccountStorage.saveAccount(accountData);
 
-      debugPrint(accountData['selectedIcon'].toString());
-
       setState(() {
         regularAccountsList.add(
           MyRegularAccountCard(
@@ -83,9 +82,9 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
             card_description: accountData['description'],
             card_balance: accountData['initialBalance'],
             card_icon: Icon(
-              IconData(accountData['selectedIcon']),
+              IconData(accountData['selectedIcon'], fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'), 
+              size: 35, 
               color: Color(accountData['selectedColor']),
-              size: 33.0,
             ),
             card_color: Color(accountData['selectedColor']),
           ),
@@ -163,6 +162,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
                     'description': account.card_description,
                     'initialBalance': newBalance,
                     'selectedIcon': account.card_icon.icon?.codePoint,
+                    'selectedIconFamily' : account.card_icon.icon?.fontFamily,
                     // ignore: deprecated_member_use
                     'selectedColor': account.card_color.value,
                   });
@@ -231,6 +231,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
                     'description': account.card_description,
                     'initialBalance': newBalance,
                     'selectedIcon': account.card_icon.icon?.codePoint,
+                    'selectedIconFamily' : account.card_icon.icon?.fontFamily,
                     // ignore: deprecated_member_use
                     'selectedColor': account.card_color.value,
                   });

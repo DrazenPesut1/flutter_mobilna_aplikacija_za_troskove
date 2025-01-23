@@ -34,11 +34,11 @@ class WelcomePage extends StatelessWidget {
                 children: [
                   Text(
                     "The best way to track and manage your finances.",
-                    style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 14).textStyle,
+                    style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                     textAlign: TextAlign.center,
                   ),
                   Text("Never worry about spending a dime again!",
-                      style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 14).textStyle
+                      style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle
                   ),
                 ],
               ),
@@ -51,10 +51,10 @@ class WelcomePage extends StatelessWidget {
             const SizedBox(
               height: 50.0,
             ),
-            MyButton("Create account", 260.0, () {
-              Navigator.pushNamed(context, '/register_page');
+            MyButton("Start", 260.0, () {
+              Navigator.pushNamed(context, '/navigation_page');
             }),
-            Row(
+            /*Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
@@ -72,7 +72,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            )*/
           ],
         ),
       )),

@@ -135,7 +135,7 @@ class _AddIncomePage extends State<AddIncomePage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
               Row(
@@ -163,7 +163,7 @@ class _AddIncomePage extends State<AddIncomePage> {
                           child: Center(
                             child: Text(
                               chosen_category_name,
-                              style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
+                              style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                             ),
                           ),
                         ),
@@ -199,7 +199,7 @@ class _AddIncomePage extends State<AddIncomePage> {
                           child: Center(
                             child: Text(
                               chosen_account_name,
-                              style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 18).textStyle,
+                              style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                             ),
                           ),
                         ),
@@ -250,7 +250,7 @@ class _AddIncomePage extends State<AddIncomePage> {
                       selectedDate,
                       style: selectedDate == 'Pick a date'
                           ? NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 15).textStyle
-                          : BoldBodyTextStyle(color: Colors.black).textStyle,
+                          : BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                     ),
                   ),
                 ),

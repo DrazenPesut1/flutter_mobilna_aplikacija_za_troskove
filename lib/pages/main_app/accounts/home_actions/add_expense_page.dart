@@ -132,7 +132,7 @@ class _AddExpensePage extends State<AddExpensePage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
               Row(
@@ -245,7 +245,7 @@ class _AddExpensePage extends State<AddExpensePage> {
                         ? NormalVariableFontTextStyle(
                                 color: AppColors.textGray, fontSize: 15)
                             .textStyle
-                        : BoldBodyTextStyle(color: Colors.black).textStyle,
+                        : BoldVariableFontTextStyle(color: Colors.black, fontSize: 15).textStyle,
                   )),
                 ),
               ),

@@ -73,7 +73,8 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
     IconPickerIcon? icon = await showIconPicker(
       context,
       configuration: SinglePickerConfiguration(
-        iconPackModes: [IconPack.allMaterial, IconPack.fontAwesomeIcons],
+        iconPackModes: [IconPack.fontAwesomeIcons],
+        iconPickerShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         title: Align(
           alignment: Alignment.center,
           child: Text(
@@ -83,7 +84,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
         ),
         closeChild: Text(
           'Select',
-          style: NormalBodyTextStyle(color: AppColors.primary).textStyle,
+          style: NormalVariableFontTextStyle(color: Colors.black, fontSize: 18).textStyle,
         ),
       ),
     );
@@ -236,7 +237,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                           decoration: InputDecoration(
                             fillColor: AppColors.darkerGray,
                             hintText: "0,00",
-                            hintStyle: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
+                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                             filled: true,
                             border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -264,7 +265,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                           decoration: InputDecoration(
                             fillColor: AppColors.darkerGray,
                             hintText: "0,00",
-                            hintStyle: MoneyBodyTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
+                            hintStyle: NormalVariableFontTextStyle(color: AppColors.textGray, fontSize: 22).textStyle,
                             filled: true,
                             border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(Radius.circular(18)),
@@ -294,6 +295,7 @@ class _AddSavingsAccountPageState extends State<AddSavingsAccountPage>{
                         'initialSavedAmount': double.tryParse(initialSavedAmountController.text) ?? 0.0,
                         'savingsGoalAmount': double.tryParse(savingsGoalAmountController.text) ?? 0.0,
                         'selectedIcon': selectedIcon!.icon?.codePoint,
+                        'selectedIconFamily' : selectedIcon!.icon?.fontFamily,
                         'selectedColor': selectedColor.value,
                       };
                       Navigator.pop(context, accountData);

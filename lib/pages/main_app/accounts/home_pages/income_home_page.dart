@@ -83,6 +83,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
       await IncomeStorage.saveCategories({
         "categoryName": predefinedCategory.category_name,
         "categoryIcon": predefinedCategory.category_icon.codePoint,
+        "categoryIconFamily" : predefinedCategory.category_icon.fontFamily,
         "categoryColor": predefinedCategory.category_color.value,
         "categoryIncome": 0.0,
       });
@@ -95,7 +96,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
     expenseCategoryList = loadedCategoryData.map((categoryData) {
       return ExpenseCategoryCard(
         category_name: categoryData['categoryName'],
-        category_icon: IconData(categoryData['categoryIcon']), 
+        category_icon: IconData(categoryData['categoryIcon'], fontFamily: categoryData['categoryIconFamily'], fontPackage: 'font_awesome_flutter'), 
         category_color: Color(categoryData['categoryColor']),
         category_expense: categoryData['categoryExpense'] ?? 0.0,
       );
@@ -109,7 +110,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
     incomeCategoryList = loadedCategoryData.map((categoryData) {
       return IncomeCategoryCard(
         category_name: categoryData['categoryName'],
-        category_icon: IconData(categoryData['categoryIcon']), 
+        category_icon: IconData(categoryData['categoryIcon'], fontFamily: categoryData['categoryIconFamily'], fontPackage: 'font_awesome_flutter'), 
         category_color: Color(categoryData['categoryColor']),
         category_income: categoryData['categoryIncome'] ?? 0.0,
       );
@@ -129,9 +130,9 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
           card_description: accountData['description'],
           card_balance: accountData['initialBalance'],
           card_icon: Icon(
-            IconData(accountData['selectedIcon']),
+            IconData(accountData['selectedIcon'], fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'),
             color: Color(accountData['selectedColor']),
-            size: 45.0,
+            size: 35.0,
           ),
           card_color: Color(accountData['selectedColor']),
         );
@@ -161,6 +162,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
         'description': found_account_card.card_description,
         'initialBalance': found_account_card.card_balance,
         'selectedIcon': found_account_card.card_icon.icon?.codePoint,
+        'selecteIconFamily' : found_account_card.card_icon.icon?.fontFamily,
         'selectedColor': found_account_card.card_color.value
       });
 
@@ -176,6 +178,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
       await ExpenseStorage.updateCategory({
         "categoryName": found_category.category_name,
         "categoryIcon": found_category.category_icon.codePoint,
+        "categoryIconFamily" : found_category.category_icon.fontFamily,
         "categoryColor": found_category.category_color.value,
         "categoryExpense": found_category.category_expense,
       });
@@ -217,6 +220,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
         'description': found_account_card.card_description,
         'initialBalance': found_account_card.card_balance,
         'selectedIcon': found_account_card.card_icon.icon?.codePoint,
+        'selectedIconFamily' : found_account_card.card_icon.icon?.fontFamily,
         'selectedColor': found_account_card.card_color.value
       });
 
@@ -233,6 +237,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
         "categoryName": found_category.category_name,
         "categoryIcon": found_category.category_icon.codePoint,
         "categoryColor": found_category.category_color.value,
+        "categoryIconFamily" : found_category.category_icon.fontFamily,
         "categoryIncome": found_category.category_income,
       });
 
@@ -267,7 +272,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
             IncomeCategoryCard(
               category_name: categoryData['categoryName'],
               category_icon: IconData(
-                categoryData['categoryIcon'],
+                categoryData['categoryIcon'], fontFamily: categoryData['categoryIconFamily'], fontPackage: 'font_awesome_flutter'
               ),
               category_color: Color(categoryData['categoryColor']),
               category_income: categoryData['categoryExpense'],
@@ -373,15 +378,15 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
               ],
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 15),
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Quick Actions", 
+              "Operations", 
               style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 17).textStyle,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -424,7 +429,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
             ],
           ),
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
           Align(
             alignment: Alignment.centerLeft,

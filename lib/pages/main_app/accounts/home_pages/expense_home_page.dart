@@ -24,19 +24,9 @@ class ExpenseHomePage extends StatefulWidget {
 class _ExpenseHomePageState extends State<ExpenseHomePage> {
   List<ExpenseCategoryCard> predefinedCategoryList = [
     ExpenseCategoryCard(
-      category_name: "Car",
-      category_icon: FontAwesomeIcons.car,
-      category_color: Colors.green,
-    ),
-    ExpenseCategoryCard(
       category_name: "Health",
-      category_icon: FontAwesomeIcons.heart,
+      category_icon: FontAwesomeIcons.heartCrack,
       category_color: Colors.red,
-    ),
-    ExpenseCategoryCard(
-      category_name: "Groceries",
-      category_icon: FontAwesomeIcons.cartShopping,
-      category_color: Colors.blueAccent,
     ),
     ExpenseCategoryCard(
       category_name: "Groceries",
@@ -50,12 +40,17 @@ class _ExpenseHomePageState extends State<ExpenseHomePage> {
     ),
     ExpenseCategoryCard(
       category_name: "Transportation",
-      category_icon: FontAwesomeIcons.mugSaucer,
+      category_icon: FontAwesomeIcons.bus,
       category_color: Colors.orange,
     ),
     ExpenseCategoryCard(
+      category_name: "Car",
+      category_icon: FontAwesomeIcons.carSide,
+      category_color: Colors.green,
+    ),
+    ExpenseCategoryCard(
       category_name: "Entertainment",
-      category_icon: FontAwesomeIcons.mugSaucer,
+      category_icon: FontAwesomeIcons.film,
       category_color: Colors.deepPurpleAccent,
     ),
   ];
@@ -83,6 +78,7 @@ class _ExpenseHomePageState extends State<ExpenseHomePage> {
       await ExpenseStorage.saveCategories({
         "categoryName": predefinedCategory.category_name,
         "categoryIcon": predefinedCategory.category_icon.codePoint,
+        "categoryIconFamily" : predefinedCategory.category_icon.fontFamily,
         "categoryColor": predefinedCategory.category_color.value,
         "categoryExpense": 0.0,
       });
@@ -97,7 +93,7 @@ class _ExpenseHomePageState extends State<ExpenseHomePage> {
       return ExpenseCategoryCard(
         category_name: categoryData['categoryName'],
         category_icon: IconData(
-          categoryData['categoryIcon'], 
+          categoryData['categoryIcon'], fontFamily: categoryData['categoryIconFamily'], fontPackage: 'font_awesome_flutter' 
         ),
         category_color: Color(categoryData['categoryColor']),
         category_expense: categoryData['categoryExpense'] ?? 0.0,
@@ -116,7 +112,7 @@ Future<void> _loadIncomeCategories() async {
       return IncomeCategoryCard(
         category_name: categoryData['categoryName'],
         category_icon: IconData(
-          categoryData['categoryIcon'], 
+          categoryData['categoryIcon'], fontFamily: categoryData['categoryIconFamily'], fontPackage: 'font_awesome_flutter'  
         ),
         category_color: Color(categoryData['categoryColor']),
         category_income: categoryData['categoryIncome'] ?? 0.0,
@@ -138,7 +134,7 @@ Future<void> _loadIncomeCategories() async {
           card_description: accountData['description'],
           card_balance: accountData['initialBalance'],
           card_icon: Icon(
-            IconData(accountData['selectedIcon']),
+            IconData(accountData['selectedIcon'], fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'),
             color: Color(accountData['selectedColor']),
             size: 45.0,
           ),
@@ -170,6 +166,7 @@ Future<void> _loadIncomeCategories() async {
         'description': found_account_card.card_description,
         'initialBalance': found_account_card.card_balance,
         'selectedIcon': found_account_card.card_icon.icon?.codePoint,
+        'selectedIconFamily': found_account_card.card_icon.icon?.fontFamily,
         'selectedColor': found_account_card.card_color.value
       });
 
@@ -184,6 +181,7 @@ Future<void> _loadIncomeCategories() async {
       await ExpenseStorage.updateCategory({
         "categoryName": found_category.category_name,
         "categoryIcon": found_category.category_icon.codePoint,
+        'categoryIconFamily': found_category.category_icon.fontFamily,
         "categoryColor": found_category.category_color.value,
         "categoryExpense": found_category.category_expense,
       });
@@ -223,6 +221,7 @@ Future<void> _loadIncomeCategories() async {
         'description': found_account_card.card_description,
         'initialBalance': found_account_card.card_balance,
         'selectedIcon': found_account_card.card_icon.icon?.codePoint,
+        'selectedIconFamily': found_account_card.card_icon.icon?.fontFamily,
         'selectedColor': found_account_card.card_color.value
       });
 
@@ -237,6 +236,7 @@ Future<void> _loadIncomeCategories() async {
       await IncomeStorage.updateCategory({
         "categoryName": found_category.category_name,
         "categoryIcon": found_category.category_icon.codePoint,
+        'categoryIconFamily': found_category.category_icon.fontFamily,
         "categoryColor": found_category.category_color.value,
         "categoryIncome": found_category.category_income,
       });
@@ -271,7 +271,7 @@ Future<void> _loadIncomeCategories() async {
           ExpenseCategoryCard(
             category_name: categoryData['categoryName'],
             category_icon: IconData(
-              categoryData['categoryIcon'],
+              categoryData['categoryIcon'], fontFamily: categoryData['categoryIconFamily'], fontPackage: 'font_awesome_flutter'
             ),
             category_color: Color(categoryData['categoryColor']),
             category_expense: categoryData['categoryExpense'],
@@ -377,15 +377,15 @@ Future<void> _loadIncomeCategories() async {
                 ],
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 15),
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Quick Actions", 
+              "Operations", 
               style: BoldVariableFontTextStyle(color: Colors.black, fontSize: 17).textStyle,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -428,7 +428,7 @@ Future<void> _loadIncomeCategories() async {
             ],
           ),
           const SizedBox(
-            height: 30,
+            height: 20,
           ),
           Align(
             alignment: Alignment.centerLeft,

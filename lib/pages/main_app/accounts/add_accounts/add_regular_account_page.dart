@@ -20,10 +20,12 @@ class AddRegularAccountPage extends StatefulWidget {
 class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
   Color selectedColor = Colors.blue;
   Icon selectedIcon = const Icon(
-    IconData(0xe05c),
-    size: 33.0,
+    FontAwesomeIcons.ccVisa,
+    size: 35.0,
     color: Colors.blue,
   );
+
+
 
   final TextEditingController accountNameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
@@ -45,7 +47,7 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
                   selectedIcon = Icon(
                     selectedIcon.icon, 
                     color: selectedColor,
-                    size: 33.0,
+                    size: 35.0,
                   );
                 });
               },
@@ -71,7 +73,8 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
     IconPickerIcon? icon = await showIconPicker(
       context,
       configuration: SinglePickerConfiguration(
-        iconPackModes: [IconPack.allMaterial],
+        iconPackModes: [IconPack.fontAwesomeIcons],
+        iconPickerShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         title: Align(
           alignment: Alignment.center,
           child: Text(
@@ -91,10 +94,10 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
         selectedIcon = Icon(
           icon.data,
           color: selectedColor,
-          size: 33.0,
+          size: 35.0,
         );
       });
-      debugPrint("Selected icon: ${selectedIcon!.icon!.codePoint}");
+      debugPrint("Set codepoint: ${selectedIcon!.icon!.codePoint}");
     }
   }
 
@@ -258,11 +261,16 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
                           'accountName': accountNameController.text,
                           'description': descriptionController.text,
                           'initialBalance': double.tryParse(initialBalanceController.text) ?? 0.0,
-                          'selectedIcon': selectedIcon.icon?.codePoint,
+                          'selectedIcon': selectedIcon.icon!.codePoint,
+                          'selectedIconFamily' : selectedIcon.icon!.fontFamily, 
                           'selectedColor': selectedColor.value,
                         };
-            
-                        Navigator.pop(context, accountData);
+
+                        if(accountNameController.text == ''){
+                          AlertDialog(actions: [Text("Please fill select an account name")],);
+                        } else {
+                          Navigator.pop(context, accountData);
+                        }
               }, label: 'Add',),
                 ],
               ),

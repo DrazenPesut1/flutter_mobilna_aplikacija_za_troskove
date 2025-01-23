@@ -33,16 +33,17 @@ class _SavingsAccountPageState extends State<SavingsAccountPage> {
       savingsAccountsList = loadedAccountsData.map((accountData) {
         return MySavingsAccountCard(
           card_title: accountData['accountName'],
-          card_description: accountData['description'],
-          card_balance: accountData['initialSavedAmount'],
-          goal: accountData['savingsGoalAmount'],
-          card_icon: Icon(
-            IconData(accountData['selectedIcon']),
-            color: Color(accountData['selectedColor']),
-            size: 45.0,
-          ),
-          card_color: Color(accountData['selectedColor']),
-          progress: (1.0 * accountData['initialSavedAmount']) / accountData['savingsGoalAmount'],
+            card_description: accountData['description'],
+            card_balance: accountData['initialSavedAmount'],
+            goal: accountData['savingsGoalAmount'],
+            card_icon: Icon(
+              IconData(accountData['selectedIcon'],
+              fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'),
+              color: Color(accountData['selectedColor']),
+              size: 35.0,
+            ),
+            card_color: Color(accountData['selectedColor']),
+            progress: (1.0 * accountData['initialSavedAmount']) / accountData['savingsGoalAmount'],
         );
       }).toList();
     });
@@ -61,9 +62,10 @@ class _SavingsAccountPageState extends State<SavingsAccountPage> {
             card_balance: accountData['initialSavedAmount'],
             goal: accountData['savingsGoalAmount'],
             card_icon: Icon(
-              IconData(accountData['selectedIcon']),
+              IconData(accountData['selectedIcon'],
+              fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'),
               color: Color(accountData['selectedColor']),
-              size: 45.0,
+              size: 35.0,
             ),
             card_color: Color(accountData['selectedColor']),
             progress: (1.0 * accountData['initialSavedAmount']) / accountData['savingsGoalAmount'],
@@ -112,7 +114,7 @@ class _SavingsAccountPageState extends State<SavingsAccountPage> {
                       'initialSavedAmount': newBalance,
                       'savingsGoalAmount': account.goal,
                       'selectedIcon': account.card_icon.icon?.codePoint,
-                      // ignore: deprecated_member_use
+                      'selectedIconFamily': account.card_icon.icon?.fontFamily,
                       'selectedColor': account.card_color.value
                     });
                     Navigator.pop(context);
@@ -171,6 +173,7 @@ class _SavingsAccountPageState extends State<SavingsAccountPage> {
                       'initialSavedAmount': newBalance,
                       'savingsGoalAmount': account.goal,
                       'selectedIcon': account.card_icon.icon?.codePoint,
+                      'selectedIconFamily': account.card_icon.icon?.fontFamily,
                       // ignore: deprecated_member_use
                       'selectedColor': account.card_color.value
                     });
