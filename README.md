@@ -48,3 +48,4 @@ Android emulatori pruženi od strane Android Studia se koriste za razvoj i testi
 - **12.12.2024.** - dodana mogućnost uređivanja uređivanje računa 
 - **20.12.2024** - popravljen i nadodan kod za račune, radim na kategorijama za glavnu stranicu
 - **14.1.2024** - dodane kategorije za troškove i dodavanje vlastitih kategorija
+- **19.1.2024.** - kraj projekta
