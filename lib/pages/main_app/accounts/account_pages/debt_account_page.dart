@@ -1,8 +1,8 @@
 import 'package:expense_tracker/myComponents/AccountCard.dart';
-import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
-import 'package:expense_tracker/myComponents/RoundedIconActionButtonReversed.dart';
-import 'package:expense_tracker/myComponents/RoundedIconActionButton.dart';
-import 'package:expense_tracker/pages/main_app/storage/account_storage/debts_account_storage.dart';
+import 'package:expense_tracker/myComponents/RoundedActionButton.dart';
+import 'package:expense_tracker/myComponents/AccountActionButton.dart';
+import 'package:expense_tracker/myComponents/AccountActionButtonReversed.dart';
+import 'package:expense_tracker/storage/account_storage/debts_account_storage.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
@@ -279,7 +279,7 @@ class _DebtsAccountPageState extends State<DebtsAccountPage> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    RoundedIconActionButton(
+                    AccountActionButton(
                         function: () {
                           addMoney(account, context, () {
                             Navigator.pop(context);
@@ -289,7 +289,7 @@ class _DebtsAccountPageState extends State<DebtsAccountPage> {
                         label: 'Add',
                         color: AppColors.primary),
                     const SizedBox(height: 10),
-                    RoundedIconActionButton(
+                    AccountActionButton(
                         function: () {
                           removeMoney(account, context, () {
                             Navigator.pop(context);
@@ -299,7 +299,7 @@ class _DebtsAccountPageState extends State<DebtsAccountPage> {
                         label: 'Remove',
                         color: AppColors.primary),
                     const SizedBox(height: 10),
-                    RoundedIconActionButtonReversed(
+                    AccountActionButtonReversed(
                         function: () {
                           deleteAccount(account, (){
                               Navigator.pop(context);
@@ -324,7 +324,7 @@ class _DebtsAccountPageState extends State<DebtsAccountPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 10),
-        child: FloatingAddButton(account_type: 'Debts', function: () => navigateToAddAccountPage(context)),
+        child: FloatingAddButton(function: () => navigateToAddAccountPage(context)),
       ),
       body: debtsAccountsList.isEmpty
           ? Center(

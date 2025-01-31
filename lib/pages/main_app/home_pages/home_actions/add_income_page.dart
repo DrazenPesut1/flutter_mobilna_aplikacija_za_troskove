@@ -1,8 +1,8 @@
 import 'package:expense_tracker/myComponents/AccountCard.dart';
-import 'package:expense_tracker/myComponents/HomeComponents/CategoryCard.dart';
-import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
-import 'package:expense_tracker/pages/main_app/accounts/home_actions/from_account.dart';
-import 'package:expense_tracker/pages/main_app/accounts/home_actions/from_category.dart';
+import 'package:expense_tracker/myComponents/CategoryCard.dart';
+import 'package:expense_tracker/myComponents/RoundedActionButton.dart';
+import 'package:expense_tracker/pages/main_app/home_pages/home_actions/from_account.dart';
+import 'package:expense_tracker/pages/main_app/home_pages/home_actions/from_category.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
@@ -5,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:dashed_circular_progress_bar/dashed_circular_progress_bar.dart';
 
-abstract class Accountcard extends StatefulWidget {
+abstract class AccountCard extends StatefulWidget {
   final String card_title;
   final String card_description;
   final String card_subtitle;
@@ -13,7 +15,7 @@ abstract class Accountcard extends StatefulWidget {
   final Icon card_icon;
   final Color card_color;
 
-  Accountcard(
+  AccountCard(
       {super.key,
       required this.card_title,
       required this.card_description,
@@ -24,7 +26,7 @@ abstract class Accountcard extends StatefulWidget {
     );
 }
 
-class MyRegularAccountCard extends Accountcard {
+class MyRegularAccountCard extends AccountCard {
   static const account_card_subtitle = 'Account balance: ';
 
   MyRegularAccountCard({
@@ -107,7 +109,7 @@ class _MyRegularAccountCardState extends State<MyRegularAccountCard> {
   }
 }
 
-class MySavingsAccountCard extends Accountcard {
+class MySavingsAccountCard extends AccountCard {
   static const account_card_subtitle = 'Left to goal: ';
   late double progress;
   late double goal;
@@ -122,6 +124,14 @@ class MySavingsAccountCard extends Accountcard {
     required super.card_color,
     required this.progress,
   }) : super(card_subtitle: account_card_subtitle);
+
+  void addBalance(double amount){
+    card_balance += amount;
+  }
+
+  void removeBalance(double amount){
+    card_balance -= amount;
+  }
 
   @override
   _MySavingsAccountCardState createState() => _MySavingsAccountCardState();
@@ -139,13 +149,6 @@ class _MySavingsAccountCardState extends State<MySavingsAccountCard> {
       super.initState();
       widget.progress = widget.goal > 0 ? (widget.card_balance / widget.goal) * 100 : 0;
       _valueNotifier = ValueNotifier(widget.progress.clamp(0, 100));
-  }
-
-  void updateProgressBar() {
-    setState(() {
-      widget.progress = widget.goal > 0 ? (widget.card_balance / widget.goal) * 100 : 0;
-      _valueNotifier.value = widget.progress.clamp(0, 100);
-    });
   }
 
   @override
@@ -275,7 +278,7 @@ Widget build(BuildContext context) {
 }
 }
 
-class MyDebtsAccountCard extends Accountcard {
+class MyDebtsAccountCard extends AccountCard {
   // ignore: constant_identifier_names
   static const account_card_subtitle = 'I owe';
   late double progress;

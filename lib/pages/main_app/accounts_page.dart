@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
-import 'package:expense_tracker/pages/main_app/accounts/accounts_pages/regular_account_page.dart';
-import 'package:expense_tracker/pages/main_app/accounts/accounts_pages/savings_account_page.dart';
-import 'package:expense_tracker/pages/main_app/accounts/accounts_pages/debt_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/account_pages/regular_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/account_pages/savings_account_page.dart';
+import 'package:expense_tracker/pages/main_app/accounts/account_pages/debt_account_page.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -14,7 +14,8 @@ class AccountsPage extends StatefulWidget{
 }
 
 class _AccountsPageState extends State<AccountsPage> with TickerProviderStateMixin{
-  static const List<Tab> myTabs = <Tab>[
+  static const List<Tab> myTabs = 
+  <Tab>[
     Tab(text: 'Regular'),
     Tab(text: 'Savings'),
     Tab(text: 'Debts',)
@@ -27,12 +28,6 @@ class _AccountsPageState extends State<AccountsPage> with TickerProviderStateMix
     super.initState();
     tabController = TabController(vsync: this, length: myTabs.length);
   }
-
-  @override
- void dispose() {
-   tabController.dispose();
-   super.dispose();
- }
 
   @override
   Widget build(BuildContext context) {

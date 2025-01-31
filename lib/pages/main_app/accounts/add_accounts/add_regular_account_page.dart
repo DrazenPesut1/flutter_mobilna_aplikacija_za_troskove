@@ -1,5 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:expense_tracker/myComponents/AccountTextField.dart';
-import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
+import 'package:expense_tracker/myComponents/RoundedActionButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
@@ -24,7 +26,6 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
     size: 35.0,
     color: Colors.blue,
   );
-
 
 
   final TextEditingController accountNameController = TextEditingController();
@@ -97,7 +98,7 @@ class _AddRegularAccountPageState extends State<AddRegularAccountPage> {
           size: 35.0,
         );
       });
-      debugPrint("Set codepoint: ${selectedIcon!.icon!.codePoint}");
+      debugPrint("Set codepoint: ${selectedIcon.icon!.codePoint}");
     }
   }
 

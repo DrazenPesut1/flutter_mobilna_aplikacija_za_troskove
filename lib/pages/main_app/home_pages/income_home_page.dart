@@ -1,10 +1,10 @@
 import 'package:expense_tracker/myComponents/AccountCard.dart';
-import 'package:expense_tracker/myComponents/HomeComponents/CategoryCard.dart';
-import 'package:expense_tracker/myComponents/HomeComponents/HomeActionButton.dart';
-import 'package:expense_tracker/myComponents/RoundedIconActionButton.dart';
-import 'package:expense_tracker/pages/main_app/storage/account_storage/regular_account_storage.dart';
-import 'package:expense_tracker/pages/main_app/storage/expense_storage/expense_storage.dart';
-import 'package:expense_tracker/pages/main_app/storage/expense_storage/income_storage.dart';
+import 'package:expense_tracker/myComponents/CategoryCard.dart';
+import 'package:expense_tracker/myComponents/HomeActionButton.dart';
+import 'package:expense_tracker/myComponents/AccountActionButtonReversed.dart';
+import 'package:expense_tracker/storage/account_storage/regular_account_storage.dart';
+import 'package:expense_tracker/storage/expense_storage/expense_storage.dart';
+import 'package:expense_tracker/storage/expense_storage/income_storage.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
@@ -335,7 +335,7 @@ class _IncomeHomePageState extends State<IncomeHomePage> {
                 Text(formatter.format(category.category_income), 
                     style: MoneyBodyTextStyle(color: Colors.black, fontSize: 23).textStyle),
                 const SizedBox(height: 8.0),
-                RoundedIconActionButtonReversed(
+                AccountActionButtonReversed(
                   function: () {
                     deleteCategory(category, () {
                       Navigator.pop(context);

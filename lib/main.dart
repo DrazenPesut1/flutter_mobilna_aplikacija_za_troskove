@@ -2,10 +2,10 @@ import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_debts_a
 import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_regular_account_page.dart';
 import 'package:expense_tracker/pages/main_app/accounts/add_accounts/add_savings_account_page.dart';
 import 'package:expense_tracker/pages/main_app/accounts/edit_accounts/edit_regular_account_page.dart';
-import 'package:expense_tracker/pages/main_app/accounts/home_actions/add_category_page.dart';
-import 'package:expense_tracker/pages/main_app/accounts/home_actions/add_expense_page.dart';
-import 'package:expense_tracker/pages/main_app/accounts/home_actions/add_income_page.dart';
-import 'package:expense_tracker/pages/main_app/accounts/home_actions/make_transfer_page.dart';
+import 'package:expense_tracker/pages/main_app/home_pages/home_actions/add_category_page.dart';
+import 'package:expense_tracker/pages/main_app/home_pages/home_actions/add_expense_page.dart';
+import 'package:expense_tracker/pages/main_app/home_pages/home_actions/add_income_page.dart';
+import 'package:expense_tracker/pages/main_app/home_pages/home_actions/make_transfer_page.dart';
 import 'package:expense_tracker/pages/main_app/accounts_page.dart';
 import 'package:expense_tracker/pages/main_app/home_page.dart';
 import 'package:expense_tracker/pages/main_app/transactions_page.dart';
@@ -16,8 +16,6 @@ import 'package:expense_tracker/pages/main_app/navigation_page.dart';
 import 'package:page_transition/page_transition.dart';
 
 void main() {
-
-
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -123,6 +121,7 @@ class MyApp extends StatelessWidget {
               child: const EditRegularAccountPage()
             );
         }
+        return null;
       },
     );
   }

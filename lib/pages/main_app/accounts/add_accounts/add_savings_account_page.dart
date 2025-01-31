@@ -8,7 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_iconpicker/Models/configuration.dart';
 import 'package:flutter_iconpicker/flutter_iconpicker.dart';
-import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
+import 'package:expense_tracker/myComponents/RoundedActionButton.dart';
 
 class AddSavingsAccountPage extends StatefulWidget{
   const AddSavingsAccountPage({super.key});

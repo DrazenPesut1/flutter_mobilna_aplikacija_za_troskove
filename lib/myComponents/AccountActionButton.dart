@@ -1,12 +1,13 @@
+import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
 import 'package:flutter/material.dart';
 
-class RoundedIconActionButtonReversed extends StatelessWidget {
+class AccountActionButton extends StatelessWidget {
   final VoidCallback function;
   final String label;
   final Color color; 
 
-  const RoundedIconActionButtonReversed({
+  const AccountActionButton({
     required this.function,
     required this.label,
     required this.color, 
@@ -23,16 +24,15 @@ class RoundedIconActionButtonReversed extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
-            side: BorderSide(color: color, width: 2), 
           ),
           elevation: 0,
-          foregroundColor: color, 
-          backgroundColor: Colors.white, 
+          foregroundColor: AppColors.offWhite, 
+          backgroundColor: color, 
         ),
         child: Center(
           child: Text(
             label,
-            style: BoldVariableFontTextStyle(color: color, fontSize: 18).textStyle, 
+            style: BoldVariableFontTextStyle(color: AppColors.offWhite, fontSize: 18).textStyle, 
           ),
         ),
       ),

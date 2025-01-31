@@ -15,7 +15,7 @@ class WelcomePage extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 30, 0, 30),
         child: Column(
           children: [
-            Image.asset('assets/images/savings_new.png'),
+            Image.asset('assets/images/savings.png'),
             const SizedBox(
               height: 20.0,
             ),

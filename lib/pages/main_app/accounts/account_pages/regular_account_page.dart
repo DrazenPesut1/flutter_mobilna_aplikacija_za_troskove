@@ -1,7 +1,7 @@
-import 'package:expense_tracker/myComponents/HomeComponents/RoundedActionButton.dart';
-import 'package:expense_tracker/myComponents/RoundedIconActionButtonReversed.dart';
-import 'package:expense_tracker/myComponents/RoundedIconActionButton.dart';
-import 'package:expense_tracker/pages/main_app/storage/account_storage/regular_account_storage.dart';
+import 'package:expense_tracker/myComponents/RoundedActionButton.dart';
+import 'package:expense_tracker/myComponents/AccountActionButton.dart';
+import 'package:expense_tracker/myComponents/AccountActionButtonReversed.dart';
+import 'package:expense_tracker/storage/account_storage/regular_account_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/styles/app_colors.dart';
 import 'package:expense_tracker/styles/font_styles.dart';
@@ -82,7 +82,9 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
             card_description: accountData['description'],
             card_balance: accountData['initialBalance'],
             card_icon: Icon(
-              IconData(accountData['selectedIcon'], fontFamily: accountData['selectedIconFamily'], fontPackage: 'font_awesome_flutter'), 
+              IconData(accountData['selectedIcon'], 
+              fontFamily: accountData['selectedIconFamily'], 
+              fontPackage: 'font_awesome_flutter'), 
               size: 35, 
               color: Color(accountData['selectedColor']),
             ),
@@ -310,7 +312,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  RoundedIconActionButton(function: (){
+                  AccountActionButton(function: (){
                     editAccount(account, context, () {
                       _loadAccounts();  
                     });
@@ -318,7 +320,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
                   SizedBox(
                     height: 10,
                   ),
-                  RoundedIconActionButton(function: (){
+                  AccountActionButton(function: (){
                     addMoney(account, context, () {
                       Navigator.pop(context);
                       _loadAccounts(); 
@@ -327,7 +329,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  RoundedIconActionButton(function: (){
+                  AccountActionButton(function: (){
                     removeMoney(account, context, (){
                       Navigator.pop(context);
                       _loadAccounts();
@@ -336,7 +338,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  RoundedIconActionButton(function: (){
+                  AccountActionButton(function: (){
                       Navigator.pushNamed(context, '/make_transfer_page', 
                       arguments: {
                         'transfer_account' : account,
@@ -349,7 +351,7 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
                   const SizedBox(
                     height: 10,
                   ),
-                  RoundedIconActionButtonReversed(function: (){
+                  AccountActionButtonReversed(function: (){
                     deleteAccount(account, context, (){
                       Navigator.pop(context);
                       _loadAccounts();
@@ -374,7 +376,6 @@ class _RegularAccountPageState extends State<RegularAccountPage> {
   Widget build(BuildContext context) {
   return Scaffold(
     floatingActionButton: FloatingAddButton(
-      account_type: 'Regular', 
       function: () => navigateToAddAccountPage(context)
     ),
     backgroundColor: AppColors.offWhite, 
