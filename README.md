@@ -33,6 +33,12 @@ Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok
 - uređivanje računa podrazumijeva promjenu naziva, ikone, dodavanje ili oduzimanje od stanja računa, prijenos između računa
 - računi za štednju i dugove prikazuju napredak do cilja štednje ili vraćanja/primanja duga
 
+**Stranica za transakcije**
+- ostavljeno za verziju 2
+
+**Stranica za statistiku**
+- ostavljeno za verziju 2
+
 ## Tehnologije
 Glavne tehnologije korištene za izvedbu aplikacije su Flutter i programski jezik Dart. Flutter omogućuje razvoj jedinstvene cross-platform kodne baze za operacijske sustave Android i iOS.
 Android emulatori pruženi od strane Android Studia se koriste za razvoj i testiranje aplikacije, a glavno razvojno okruženje je VS-Code.
@@ -48,4 +54,4 @@ Android emulatori pruženi od strane Android Studia se koriste za razvoj i testi
 - **12.12.2024.** - dodana mogućnost uređivanja uređivanje računa 
 - **20.12.2024** - popravljen i nadodan kod za račune, radim na kategorijama za glavnu stranicu
 - **14.1.2024** - dodane kategorije za troškove i dodavanje vlastitih kategorija
-- **19.1.2024.** - kraj projekta
+- **19.1.2024.** - kraj prve verzije projekta
