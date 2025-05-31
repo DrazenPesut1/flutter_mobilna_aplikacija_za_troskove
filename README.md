@@ -1,7 +1,7 @@
 # Mobilna aplikacija za praćenje troškova
 
 ## Opis projekta
-Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok novca i praćenje osobnih troškova s ciljem boljeg raspolaganja financijama. Aplikacija će korisnicima omogućiti da jednostavno unesu troškove i prihode koje kategoriziraju prema nekoj vrsti troška (hrana, računi, automobil, javni prijevoz, zdravstvo...) ili prihoda (plaća, ulaganje, dar...) te mogu postaviti štednju ili dugovanje te pratiti njihov napredak. Pregled troškova će biti omogućen prema različitim vremenskim rasponima (danas, ovaj tjedan, ovaj mjesec ili bilo koji raspon koji korisnik želi), a osim toga aplikacija nudi pregled detalja i analizu troškova i prihoda uz pomoć grafova i izvještaja. Aplikacija će biti izvedena kao cross-platform aplikacija dostupna na Android i iOS uređajima koristeći tehnologije Flutter, programski jezik Dart, dodatne pakete te bazu podataka Firebase. 
+Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok novca i praćenje osobnih troškova s ciljem boljeg raspolaganja financijama. Aplikacija će korisnicima omogućiti da jednostavno unesu troškove i prihode koje kategoriziraju prema nekoj vrsti troška (hrana, računi, automobil, javni prijevoz, zdravstvo...) ili prihoda (plaća, ulaganje, dar...) te mogu postaviti štednju ili dugovanje te pratiti njihov napredak. Pregled troškova će biti omogućen prema različitim vremenskim rasponima (danas, ovaj tjedan, ovaj mjesec ili bilo koji raspon koji korisnik želi), a osim toga aplikacija nudi pregled detalja i analizu troškova i prihoda uz pomoć grafova i izvještaja. Aplikacija će biti izvedena kao aplikacija dostupna na Android i iOS uređajima koristeći tehnologije Flutter, programski jezik Dart, dodatne pakete i eventualno i bazu podataka. Podaci se trenutno lokalno na uređaju pomoću Flutter paketa shared_preferences. 
 
 ## Struktura aplikacije
 **Naslovna stranica**
@@ -39,7 +39,7 @@ Mobilna aplikacija za praćenje projekta omogućit će korisnicima uvid u protok
 - ostavljeno za verziju 2
 
 ## Tehnologije
-Glavne tehnologije korištene za izvedbu aplikacije su Flutter i programski jezik Dart. Flutter omogućuje razvoj jedinstvene cross-platform kodne baze za operacijske sustave Android i iOS.
+Glavne tehnologije korištene za izvedbu aplikacije su Flutter i programski jezik Dart.
 Android emulatori pruženi od strane Android Studia se koriste za razvoj i testiranje aplikacije, a glavno razvojno okruženje je VS-Code.
 
 ## Resursi
@@ -54,3 +54,5 @@ Android emulatori pruženi od strane Android Studia se koriste za razvoj i testi
 - **20.12.2024** - popravljen i nadodan kod za račune, radim na kategorijama za glavnu stranicu
 - **14.1.2024** - dodane kategorije za troškove i dodavanje vlastitih kategorija
 - **19.1.2024.** - kraj prve verzije projekta
+
+## Postoji greška na glavnoj stranici (Home Page) gdje se kod izgrađene aplikacije ne prikazuju kategorije, ali u debug verziji se prikazuju zbog pogrešno ugniježđenih komponenata ("widgeta").
