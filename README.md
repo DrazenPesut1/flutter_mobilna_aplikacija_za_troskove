@@ -55,4 +55,4 @@ Android emulatori pruženi od strane Android Studia se koriste za razvoj i testi
 - **14.1.2024** - dodane kategorije za troškove i dodavanje vlastitih kategorija
 - **19.1.2024.** - kraj prve verzije projekta
 
-# ! Postoji greška na glavnoj stranici (Home Page) gdje se kod izgrađene aplikacije ne prikazuju kategorije, ali u debug verziji se prikazuju zbog pogrešno ugniježđenih komponenata ("widgeta") !
+**! Postoji greška na glavnoj stranici (Home Page) gdje se kod izgrađene aplikacije ne prikazuju kategorije, ali u debug verziji se prikazuju zbog pogrešno ugniježđenih komponenata ("widgeta") !**
