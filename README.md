@@ -46,6 +46,16 @@ Android emulatori pruženi od strane Android Studia se koriste za razvoj i testi
 - [Flutter dokumentacija](https://docs.flutter.dev/)
 - [Flutter Course](https://www.youtube.com/watch?v=VPvVD8t02U8&t=37026s)
 
+## Korišteni paketi
+- [Font Awesome Icons](https://pub.dev/packages/font_awesome_flutter)
+- [Ionicons](https://pub.dev/packages/ionicons)
+- [Flutter Colorpicker](https://pub.dev/packages/flutter_colorpicker)
+- [Flutter Iconpicker](https://pub.dev/packages/flutter_iconpicker)
+- [Page Transition](https://pub.dev/packages/page_transition)
+- [Formatter](https://pub.dev/packages/intl)
+- [Dashed Circular Progress Bar](https://pub.dev/packages/dashed_circular_progress_bar)
+- [Shared Preferences](https://pub.dev/packages/shared_preferences)
+
 ## Tijek Projekta
 - **6.11.2024.** - napravljene naslovna stranica, stranice za registraciju i prijavu, trenutno bez funkcionalnosti
 - **20.11.2024.** - napravljen izgled računa, trenutno radim na funkcionalnosti dodavanja računa
